@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#120c1c">
+<title>Happy Birthday, Part Time — The Folded Oracle</title>
+<style>
+:root{
+  --ink:#21151b;--paper:#ead7b8;--paper2:#f7ead0;--gold:#c9a65a;--gold2:#f0d799;
+  --night:#08060d;--violet:#251231;--cream:#f7ead0;--rouge:#832940;--green:#405742;--blue:#18284c;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#08060d;color:var(--cream);font-family:Georgia,"Times New Roman",serif}
+body{overflow-x:hidden;background:
+ radial-gradient(circle at 50% -10%,rgba(113,70,132,.42),transparent 42%),
+ radial-gradient(circle at 15% 20%,rgba(212,170,90,.12),transparent 23%),
+ linear-gradient(155deg,#21112d,#09070f 64%,#050408)}
+button,input{font:inherit}
+button{cursor:pointer}
+.bg-stars,.bg-stars:before,.bg-stars:after{position:fixed;inset:0;content:"";pointer-events:none}
+.bg-stars{background-image:radial-gradient(circle,#fff5cf 0 1px,transparent 1.4px);background-size:83px 83px;opacity:.32;animation:drift 20s linear infinite}
+.bg-stars:before{background-image:radial-gradient(circle,#e6b9ff 0 1px,transparent 1.4px);background-size:137px 137px;opacity:.28;animation:twinkle 4s ease-in-out infinite}
+.bg-stars:after{background-image:radial-gradient(circle,#ffd779 0 1.2px,transparent 1.7px);background-size:193px 193px;opacity:.19;animation:twinkle 6s ease-in-out infinite reverse}
+@keyframes drift{to{transform:translateY(83px)}}@keyframes twinkle{50%{opacity:.08}}
+.shell{width:min(1100px,100%);margin:auto;padding:24px 14px 70px;position:relative}
+.mast{text-align:center;position:relative;padding:12px 0 8px}
+.kicker{letter-spacing:.28em;text-transform:uppercase;color:var(--gold2);font-size:.72rem}
+h1{margin:.35rem 0 .6rem;font-weight:500;line-height:.88;font-size:clamp(2.6rem,8vw,6rem);text-shadow:0 8px 42px #000}
+.lede{max-width:700px;margin:auto;color:#cabbd0;line-height:1.55}
+.desk{position:relative;max-width:920px;margin:18px auto 0;border:1px solid rgba(230,196,125,.45);border-radius:28px;padding:20px;background:
+ linear-gradient(rgba(26,13,31,.9),rgba(8,6,12,.94)),
+ repeating-linear-gradient(90deg,#28140c 0 5px,#321b10 5px 11px);
+ box-shadow:0 35px 90px #000b,inset 0 1px #ffffff12;overflow:hidden}
+.desk:before{content:"";position:absolute;inset:10px;border:1px solid rgba(212,170,90,.24);border-radius:21px;pointer-events:none}
+.candles{position:absolute;inset:0;pointer-events:none}
+.candle{position:absolute;width:11px;height:70px;background:linear-gradient(90deg,#b9945d,#f6e1b3,#9a7342);bottom:30px;border-radius:4px;box-shadow:0 0 18px #d39a5a66}
+.candle:before{content:"";position:absolute;width:13px;height:22px;left:-1px;top:-18px;border-radius:50% 50% 35% 35%;background:radial-gradient(circle at 50% 65%,#fff7c5 0 18%,#ffb339 45%,transparent 68%);filter:drop-shadow(0 0 9px #ffb339);animation:flame 1.7s ease-in-out infinite}
+.c1{left:18px}.c2{right:24px;height:55px}.c3{right:92px;height:35px}
+@keyframes flame{50%{transform:scale(.86,1.12) rotate(2deg)}}
+.question-zone{position:relative;z-index:8;max-width:720px;margin:auto;text-align:center}
+.prompt{color:var(--gold2);letter-spacing:.11em;text-transform:uppercase;font-size:.78rem;margin:2px 0 10px}
+.ask-row{display:flex;gap:10px;max-width:650px;margin:auto}
+input{flex:1;min-width:0;padding:15px 18px;border-radius:999px;border:1px solid #d5b66f77;background:#08070d;color:#fff4df;outline:none;box-shadow:inset 0 3px 14px #0008}
+input:focus{border-color:#e9ca80;box-shadow:0 0 0 3px #d7ae5522}
+.gold-btn,.ghost-btn{border-radius:999px;padding:14px 19px;border:0;font-weight:700;letter-spacing:.07em}
+.version-link{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
+.gold-btn{color:#24151e;background:linear-gradient(#f5dda0,#cba454);box-shadow:0 7px 20px #0009}
+.ghost-btn{color:#f5e6c5;background:#0c0911cc;border:1px solid #d7b45d77}
+.stage{position:relative;min-height:520px;display:grid;place-items:center;margin-top:10px}
+.oracle-wrap{width:min(480px,82vw);aspect-ratio:1;position:relative;perspective:950px}
+.oracle{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .4s;filter:drop-shadow(0 30px 20px #000c)}
+.oracle.foldA{animation:foldA 1.2s ease-in-out}.oracle.foldB{animation:foldB 1.4s ease-in-out}
+@keyframes foldA{0%,100%{transform:rotate(0) scale(1)}35%{transform:rotate(-10deg) scale(.9,.72)}70%{transform:rotate(9deg) scale(.82,1.05)}}
+@keyframes foldB{0%,100%{transform:rotate(0) scale(1)}25%{transform:rotate(12deg) scale(.78,1.06)}55%{transform:rotate(-11deg) scale(1.04,.78)}80%{transform:rotate(6deg) scale(.88,1.03)}}
+.paper-square{position:absolute;inset:6%;transform:rotate(45deg);background:
+ linear-gradient(135deg,rgba(255,255,255,.26),transparent 30%),
+ repeating-linear-gradient(90deg,transparent 0 11px,rgba(80,43,18,.025) 11px 12px),
+ linear-gradient(145deg,var(--paper2),var(--paper));
+ border:2px solid #75562e;box-shadow:inset 0 0 38px #75562e32}
+.paper-square:before,.paper-square:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.6%,#7a573a55 49.8% 50.2%,transparent 50.4%),linear-gradient(transparent 49.6%,#7a573a55 49.8% 50.2%,transparent 50.4%)}
+.tri{position:absolute;width:50%;height:50%;overflow:hidden;z-index:2}
+.tri:before{content:"";position:absolute;width:142%;height:142%;background:
+ radial-gradient(circle at 50% 50%,transparent 0 28%,#8b6f3d18 29% 30%,transparent 31%),
+ linear-gradient(135deg,#f7eacb,#dfc9a4);border:1px solid #8b6c45}
+.tl{left:0;top:0}.tr{right:0;top:0}.bl{left:0;bottom:0}.br{right:0;bottom:0}
+.tl:before{left:0;top:0}.tr:before{right:0;top:0}.bl:before{left:0;bottom:0}.br:before{right:0;bottom:0}
+.seal{position:absolute;z-index:4;left:50%;top:50%;width:25%;height:25%;transform:translate(-50%,-50%) rotate(-45deg);display:grid;place-items:center;border:1px solid #8f6e36;background:#1c1023;color:#efd786;border-radius:50%;font-size:1.55rem;box-shadow:0 0 0 6px #d5b66f28,0 0 25px #0008}
+.label{position:absolute;z-index:5;color:#28191b;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:clamp(.58rem,1.8vw,.8rem);line-height:1.2;width:32%;text-shadow:0 1px #fff8}
+.l1{left:8%;top:17%;transform:rotate(-45deg)}.l2{right:8%;top:17%;transform:rotate(45deg)}.l3{left:8%;bottom:17%;transform:rotate(45deg)}.l4{right:8%;bottom:17%;transform:rotate(-45deg)}
+.icon{display:block;font-size:1.5em;margin-bottom:4px}
+.rune-ring{position:absolute;inset:2%;border:1px dashed #d2b06255;border-radius:50%;animation:spin 60s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.house-guidance{display:none;position:relative;z-index:8;max-width:760px;margin:0 auto 18px;padding:18px 20px;border:1px solid #d7b96866;border-radius:14px;background:linear-gradient(145deg,#17101fdd,#0e0b14ee);box-shadow:inset 0 1px #fff1,0 12px 30px #0008;text-align:center;color:#f7edcf}.house-guidance.show{display:block;animation:rise .45s ease both}.house-guidance h3{margin:0 0 10px;color:#efd786;font-size:clamp(1.15rem,3.5vw,1.45rem);letter-spacing:.08em;text-transform:uppercase}.house-guidance p{margin:7px auto;max-width:650px;line-height:1.5}.house-guidance .alignment-line{color:#f4d781;font-weight:700}.house-guidance .connected-line{font-style:italic;opacity:.9}
+.choices{display:none;position:relative;z-index:8;max-width:780px;margin:0 auto 14px;grid-template-columns:repeat(4,1fr);gap:10px}
+.choices.show{display:grid;animation:rise .45s ease both}
+.choice{min-height:90px;padding:12px 8px;border-radius:14px;border:1px solid #e5c77844;color:#fff;background:#15101c;box-shadow:inset 0 1px #fff1,0 8px 20px #0007;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.choice b{letter-spacing:.07em;text-transform:uppercase;font-size:.82rem}.choice small{opacity:.76;line-height:1.25}
+.choice[data-house="Nocturne"]{background:linear-gradient(145deg,#263f78,#10172d)}
+.choice[data-house="Rouge"]{background:linear-gradient(145deg,#a33b5c,#421526)}
+.choice[data-house="Étoile"]{background:linear-gradient(145deg,#e2c367,#705922);color:#24180d}
+.choice[data-house="Sauvage"]{background:linear-gradient(145deg,#668068,#24352a)}
+.choice.active{outline:2px solid #fff2c2;transform:translateY(-2px)}
+.symbols{grid-template-columns:repeat(4,1fr)}
+.reveal-card{display:none;position:relative;z-index:9;max-width:720px;margin:15px auto 0;padding:26px 23px;text-align:center;color:#2a1820;background:
+ linear-gradient(#f7eacb,#dfc5a0);border:2px solid #6d4d2f;outline:1px solid #dfbd70;outline-offset:-9px;border-radius:8px;box-shadow:0 25px 65px #000c;position:relative}
+.reveal-card.show{display:block;animation:rise .65s ease both}
+.reveal-card:before,.reveal-card:after{content:"✦";position:absolute;color:#8e6f36;font-size:1.2rem;top:13px}.reveal-card:before{left:17px}.reveal-card:after{right:17px}
+.card-title{font-size:clamp(1.8rem,5vw,3.2rem);margin:.2rem 0 .6rem;font-weight:500}
+.card-meta{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#745a38;margin-bottom:15px}
+.card-text{font-size:clamp(1.02rem,2.6vw,1.23rem);line-height:1.65;max-width:620px;margin:auto}
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;text-align:left}
+.voice{padding:13px;border:1px solid #82643c55;background:#fff8e344;border-radius:8px;font-size:.9rem;line-height:1.45}
+.blessing{margin-top:14px;padding-top:14px;border-top:1px solid #86673d55;font-style:italic}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:17px}
+.progress{display:flex;justify-content:center;gap:8px;margin:14px 0}
+.dot{width:9px;height:9px;border-radius:50%;background:#c7ad7760}.dot.on{background:#f0d48c;box-shadow:0 0 10px #e5bc61}
+.hidden{display:none!important}
+@keyframes rise{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.spark{position:fixed;width:6px;height:6px;background:#f7d98b;border-radius:50%;pointer-events:none;z-index:20;animation:spark 1.2s ease-out forwards}
+@keyframes spark{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+
+/* Birthday-poster layer */
+.shell:before{
+  content:"";position:fixed;inset:10px;pointer-events:none;z-index:50;
+  border:1px solid rgba(225,184,91,.38);border-radius:22px;
+  box-shadow:inset 0 0 0 4px rgba(34,17,40,.72),inset 0 0 0 5px rgba(225,184,91,.16)
+}
+.mast{padding-top:24px}
+.mast:before,.mast:after{
+  content:"✦ ☾ ✧ ♛ ✧ ☽ ✦";display:block;color:#d9b45f;
+  letter-spacing:.46em;font-size:.72rem;opacity:.86;margin-bottom:9px
+}
+.mast:after{margin:10px 0 0;transform:scaleX(-1)}
+h1{color:#ead29a;text-transform:uppercase;letter-spacing:.025em}
+h1 .happy-line{
+  display:block;font-size:.27em;letter-spacing:.34em;line-height:1.7;
+  color:#f1d88f;text-shadow:0 0 16px rgba(234,187,82,.32)
+}
+.birthday-lede{font-size:1.04rem;color:#e2d1bb}
+.desk{
+  border-color:rgba(230,196,125,.65);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(118,50,141,.26),transparent 32%),
+    linear-gradient(rgba(18,8,24,.92),rgba(5,4,9,.97)),
+    repeating-linear-gradient(90deg,#28140c 0 5px,#321b10 5px 11px);
+}
+.desk:after{
+  content:"";position:absolute;inset:3px;pointer-events:none;border-radius:25px;
+  background:
+    linear-gradient(90deg,transparent 0 48%,rgba(235,193,93,.06) 50%,transparent 52%),
+    radial-gradient(circle at 10% 8%,rgba(255,203,87,.12),transparent 15%),
+    radial-gradient(circle at 90% 12%,rgba(159,91,196,.12),transparent 16%);
+  mix-blend-mode:screen
+}
+
+.birthday-panel{
+  position:relative;z-index:7;margin:-2px auto 20px;
+  display:grid;grid-template-columns:minmax(150px,1fr) minmax(230px,1.35fr) minmax(150px,1fr);
+  align-items:stretch;gap:14px;padding:16px;
+  border:1px solid rgba(229,188,94,.55);border-radius:18px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(151,76,181,.18),transparent 38%),
+    linear-gradient(135deg,rgba(27,12,35,.97),rgba(7,5,11,.98));
+  box-shadow:inset 0 0 0 5px rgba(215,174,85,.05),0 18px 40px #0009;
+}
+.birthday-panel > *{min-width:0}
+.birthday-character,.birthday-center{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:12px;border:1px solid rgba(229,188,94,.28);border-radius:14px;
+  background:linear-gradient(160deg,rgba(255,255,255,.035),rgba(0,0,0,.18));
+}
+.birthday-character strong,.birthday-copy strong{
+  color:#f0d99e;text-transform:uppercase;letter-spacing:.07em;font-weight:500
+}
+.birthday-character strong{font-size:1.15rem;margin-top:9px}
+.birthday-character span,.birthday-copy span:last-child{
+  color:#cdbed1;line-height:1.45;font-size:.82rem;max-width:28ch
+}
+.feature-frame{
+  width:100%;max-width:170px;aspect-ratio:1;border-radius:14px;overflow:hidden;
+  border:1px solid rgba(229,188,94,.62);
+  box-shadow:0 14px 28px #000b,0 0 0 4px rgba(65,29,74,.48)
+}
+.feature-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.birthday-center{gap:9px}
+.birthday-copy{display:flex;flex-direction:column;align-items:center;gap:5px}
+.birthday-copy strong{font-size:clamp(1.15rem,2.5vw,1.65rem)}
+.birthday-crown{font-size:1.4rem;color:#e8c96f;text-shadow:0 0 12px #c4963f}
+.birthday-cake-photo.square-cake{
+  width:min(100%,220px);aspect-ratio:1;height:auto;margin:4px auto 0;border-radius:14px;overflow:hidden;
+  border:1px solid rgba(229,188,94,.68);
+  box-shadow:0 18px 35px #000c,0 0 0 5px rgba(65,29,74,.55),inset 0 0 22px rgba(255,214,112,.08)
+}
+.birthday-cake-photo.square-cake img{
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block
+}
+.cake-caption{
+  font-size:.65rem;letter-spacing:.09em;text-transform:uppercase;color:#d8bf84;
+  text-align:center;margin-top:2px
+}
+.poe-portrait{
+  position:relative;width:100%;max-width:170px;aspect-ratio:1;border-radius:14px;overflow:hidden;
+  border:1px solid rgba(229,188,94,.62);
+  background:
+    radial-gradient(circle at 62% 36%,rgba(101,73,133,.28),transparent 23%),
+    linear-gradient(145deg,#17131d,#050508 70%);
+  box-shadow:0 14px 28px #000b,0 0 0 4px rgba(65,29,74,.48)
+}
+.poe-body{position:absolute;left:38%;top:39%;width:45%;height:52%;background:#09090d;border-radius:55% 45% 50% 50%;transform:rotate(-10deg)}
+.poe-wing{position:absolute;left:19%;top:43%;width:50%;height:30%;background:linear-gradient(145deg,#1b1922,#08080c);border-radius:75% 10% 70% 20%;transform:rotate(-17deg);box-shadow:inset -7px -5px #0007}
+.poe-head{position:absolute;left:48%;top:23%;width:30%;height:30%;background:#0a0a0d;border-radius:54% 48% 52% 45%}
+.poe-beak{position:absolute;left:70%;top:35%;border-left:32px solid #0a0a0d;border-top:8px solid transparent;border-bottom:7px solid transparent}
+.poe-eye{position:absolute;left:66%;top:32%;width:6px;height:6px;border-radius:50%;background:#e0b95c;box-shadow:0 0 9px #e0b95c}
+.poe-portrait:after{
+  content:"✦";position:absolute;right:14px;top:12px;color:#e6c66f;text-shadow:0 0 10px #d5a949
+}
+.question-zone{
+  padding:16px 14px 13px;border:1px solid rgba(229,188,94,.38);border-radius:15px;
+  background:linear-gradient(135deg,rgba(239,218,173,.08),rgba(87,39,103,.12));
+  box-shadow:inset 0 0 0 4px rgba(0,0,0,.18)
+}
+.spike-wrap{width:190px}
+.spike-wrap img{
+  border-radius:29px;mask-image:none;
+  border:1px solid rgba(229,188,94,.52);
+  box-shadow:0 0 0 5px rgba(47,22,55,.75),0 16px 35px #000c
+}
+.spike-bubble{left:138px;bottom:144px;border-color:#d7b363;background:#100913f2}
+.oracle-wrap:before{
+  content:"PART TIME ✦ BIRTHDAY ORACLE ✦";position:absolute;left:50%;top:-18px;transform:translateX(-50%);
+  width:max-content;max-width:95%;color:#e6c56f;font-size:.68rem;letter-spacing:.14em;text-align:center
+}
+.reveal-card{background:
+  radial-gradient(circle at 50% 0%,rgba(255,255,255,.26),transparent 24%),
+  linear-gradient(#f7eacb,#dfc5a0)}
+.reveal-card .card-title:before{content:"♛ ";color:#8a642b}
+@media(max-width:720px){
+  .birthday-panel{grid-template-columns:1fr;gap:12px;padding:12px}
+  .birthday-center{order:-1}
+  .feature-frame,.poe-portrait{max-width:145px}
+  .birthday-cake-photo.square-cake{width:min(100%,230px)}
+  .birthday-copy strong{font-size:1.25rem}
+  .spike-wrap{width:125px}
+  .spike-bubble{left:78px;bottom:100px}
+  .shell:before{inset:4px;border-radius:15px}
+}
+
+@media(max-width:720px){
+ .desk{padding:16px 10px}.stage{min-height:430px}.oracle-wrap{width:min(390px,88vw)}
+ .choices{grid-template-columns:repeat(2,1fr)}.spike-wrap{width:115px;left:-5px;bottom:0}.spike-bubble{position:relative;left:auto;bottom:auto;width:145px;margin-top:6px;font-size:.68rem}
+ .raven{display:none}.raven-talk{position:relative;right:auto;top:auto;width:min(92%,300px);margin:0 auto 8px;font-size:.7rem;text-align:center}
+ .ask-row{flex-direction:column}.ask-row button{width:100%}.voices{grid-template-columns:1fr}
+}
+
+/* Gothic three-dimensional folded oracle */
+.stage{
+  min-height:560px;
+  padding-top:18px;
+  overflow:visible;
+}
+.oracle-wrap{
+  width:min(520px,86vw);
+  aspect-ratio:1;
+  perspective:1200px;
+  transform-style:preserve-3d;
+}
+.oracle{
+  transform:rotateX(7deg) rotateZ(1deg);
+  filter:drop-shadow(0 36px 24px rgba(0,0,0,.78));
+}
+.paper-square{
+  inset:7%;
+  transform:rotate(45deg) rotateX(5deg);
+  border:2px solid #8e6a38;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(112,49,124,.12),transparent 34%),
+    repeating-radial-gradient(circle at 50% 50%,transparent 0 17px,rgba(57,25,21,.025) 18px 19px),
+    linear-gradient(145deg,#c6ab82,#f0dfbd 42%,#9e7f58);
+  box-shadow:
+    inset 0 0 48px rgba(53,27,19,.42),
+    inset 0 0 0 7px rgba(32,16,24,.1),
+    0 9px 0 #5f4129,
+    0 21px 32px rgba(0,0,0,.52);
+}
+.paper-square:before{
+  background:
+    linear-gradient(90deg,transparent 49.3%,#4d3025aa 49.65% 50.35%,transparent 50.7%),
+    linear-gradient(transparent 49.3%,#4d3025aa 49.65% 50.35%,transparent 50.7%),
+    radial-gradient(circle at 50% 50%,transparent 0 22%,rgba(50,24,42,.13) 23% 24%,transparent 25%);
+  mix-blend-mode:multiply;
+}
+.paper-square:after{
+  content:"";
+  position:absolute;
+  inset:2.8%;
+  border:1px solid rgba(77,47,24,.5);
+  background:
+    linear-gradient(135deg,transparent 49.5%,rgba(70,42,29,.18) 50%,transparent 50.5%),
+    linear-gradient(45deg,transparent 49.5%,rgba(70,42,29,.18) 50%,transparent 50.5%);
+  box-shadow:inset 0 0 18px rgba(32,15,11,.2);
+}
+.tri{
+  overflow:visible;
+  transform-style:preserve-3d;
+}
+.tri:before{
+  width:100%;height:100%;
+  border:1px solid #6d4c31;
+  background:
+    radial-gradient(circle at 74% 26%,rgba(211,174,94,.18),transparent 22%),
+    linear-gradient(145deg,#e8d2a8 0 45%,#b69468 46% 52%,#ead7b4 53%);
+  box-shadow:
+    inset 0 0 20px rgba(58,30,23,.24),
+    0 5px 9px rgba(0,0,0,.23);
+  clip-path:polygon(0 0,100% 0,0 100%);
+}
+.tr{transform:scaleX(-1)}
+.bl{transform:scaleY(-1)}
+.br{transform:scale(-1)}
+.tl:before{transform:translateZ(18px) rotateX(-8deg);transform-origin:bottom right}
+.tr:before{transform:translateZ(14px) rotateY(8deg);transform-origin:bottom left}
+.bl:before{transform:translateZ(10px) rotateY(-8deg);transform-origin:top right}
+.br:before{transform:translateZ(16px) rotateX(8deg);transform-origin:top left}
+.seal{
+  width:27%;height:27%;
+  transform:translate(-50%,-50%) rotate(-45deg) translateZ(36px);
+  background:
+    radial-gradient(circle at 35% 30%,#44304f,#1a1021 64%,#09070d);
+  border:2px solid #d0aa56;
+  box-shadow:
+    0 0 0 7px rgba(31,15,35,.85),
+    0 0 0 9px rgba(202,161,77,.4),
+    0 13px 22px rgba(0,0,0,.58),
+    inset 0 0 18px rgba(220,180,93,.16);
+}
+.label{
+  color:#241619;
+  text-shadow:0 1px rgba(255,248,224,.8),0 0 8px rgba(255,248,224,.34);
+}
+.label:after{
+  content:"";
+  display:block;
+  width:34px;height:1px;
+  margin:5px auto 0;
+  background:#8b6835;
+  box-shadow:0 0 6px rgba(184,137,55,.35);
+}
+.oracle-wrap:after{
+  content:"☾  ✦  THE FOLDED ORACLE  ✦  ☽";
+  position:absolute;
+  left:50%;bottom:-34px;
+  transform:translateX(-50%);
+  width:max-content;max-width:96%;
+  color:#d5b667;
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-align:center;
+}
+.poe-photo img{object-position:center 35%}
+@media(max-width:720px){
+  .stage{min-height:455px;padding-top:26px}
+  .oracle-wrap{width:min(410px,92vw)}
+  .oracle{transform:rotateX(5deg)}
+  .oracle-wrap:after{bottom:-26px;font-size:.58rem;letter-spacing:.1em}
+}
+
+
+/* Character cutouts beside the title */
+.mast-character-layout{
+  display:grid;
+  grid-template-columns:minmax(105px,180px) 1fr minmax(105px,180px);
+  align-items:end;
+  gap:8px;
+  padding:18px 0 8px;
+}
+.mast-copy{position:relative;z-index:3;text-align:center}
+.title-character{
+  position:relative;
+  align-self:end;
+  height:210px;
+  overflow:visible;
+  z-index:2;
+  filter:drop-shadow(0 18px 20px rgba(0,0,0,.75));
+}
+.title-character img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  mix-blend-mode:normal;
+}
+.spike-title img{
+  object-position:49% 43%;
+  clip-path:polygon(14% 3%,83% 0,96% 12%,100% 35%,93% 67%,76% 93%,49% 100%,20% 93%,4% 74%,0 40%);
+  transform:scale(1.06);
+}
+.poe-title img{
+  object-position:54% 45%;
+  clip-path:polygon(18% 0,80% 0,96% 11%,100% 42%,92% 76%,70% 100%,38% 96%,14% 78%,0 47%,3% 18%);
+  transform:scale(1.06);
+}
+.title-character:after{
+  content:"";
+  position:absolute;inset:12% 6% 2%;
+  border-radius:50%;
+  box-shadow:0 0 42px rgba(132,69,163,.28),0 0 18px rgba(220,181,91,.18);
+  z-index:-1;
+}
+.mast h1{margin-top:.15rem}
+
+/* Simpler birthday panel */
+.simple-birthday-panel{
+  grid-template-columns:1fr minmax(150px,210px);
+  align-items:center;
+  gap:16px;
+}
+.simple-birthday-panel .birthday-copy{
+  text-align:left;
+  align-items:flex-start;
+}
+.simple-birthday-panel .birthday-copy strong{font-size:clamp(1.25rem,3.2vw,2rem)}
+.simple-birthday-panel .square-cake{width:min(100%,210px)}
+
+/* More realistic folded paper */
+.oracle-wrap{perspective:1450px}
+.oracle{
+  transform-style:preserve-3d;
+  transform:rotateX(13deg) rotateZ(.6deg);
+  filter:drop-shadow(0 38px 28px rgba(0,0,0,.86));
+}
+.paper-square{
+  transform-style:preserve-3d;
+  transform:rotate(45deg) rotateX(9deg) translateZ(2px);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.18),transparent 25%),
+    repeating-linear-gradient(90deg,transparent 0 9px,rgba(72,38,20,.025) 9px 10px),
+    linear-gradient(145deg,#c7aa7b,#f1dfba 43%,#9f7d51);
+  box-shadow:
+    inset 0 0 54px rgba(53,28,16,.46),
+    inset 0 0 0 5px rgba(45,20,14,.09),
+    0 12px 0 #5a3b25,
+    0 29px 42px rgba(0,0,0,.58);
+}
+.tri{transform-style:preserve-3d;overflow:visible}
+.tri:before{
+  clip-path:polygon(0 0,100% 0,0 100%);
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.28) 0 8%,transparent 9%),
+    radial-gradient(circle at 70% 22%,rgba(232,198,125,.2),transparent 22%),
+    linear-gradient(145deg,#ead6ad 0 42%,#b58d5e 44% 52%,#f2dfbd 54% 100%);
+  border:1px solid #60422a;
+  box-shadow:
+    inset -8px -8px 18px rgba(77,44,24,.24),
+    inset 8px 8px 14px rgba(255,248,221,.15),
+    0 7px 12px rgba(0,0,0,.32);
+}
+.tl:before{transform:translateZ(36px) rotateX(-17deg) rotateY(5deg);transform-origin:100% 100%}
+.tr:before{transform:translateZ(30px) rotateY(17deg) rotateX(-5deg);transform-origin:0 100%}
+.bl:before{transform:translateZ(26px) rotateY(-17deg) rotateX(5deg);transform-origin:100% 0}
+.br:before{transform:translateZ(34px) rotateX(17deg) rotateY(-5deg);transform-origin:0 0}
+.paper-square:after{
+  background:
+    linear-gradient(135deg,transparent 49.25%,rgba(70,39,27,.38) 49.75% 50.25%,transparent 50.75%),
+    linear-gradient(45deg,transparent 49.25%,rgba(70,39,27,.32) 49.75% 50.25%,transparent 50.75%),
+    radial-gradient(circle at 50% 50%,rgba(41,18,35,.08),transparent 36%);
+  box-shadow:inset 0 0 24px rgba(37,16,13,.18);
+}
+.seal{
+  transform:translate(-50%,-50%) rotate(-45deg) translateZ(58px);
+  box-shadow:
+    0 0 0 7px rgba(25,11,31,.92),
+    0 0 0 10px rgba(202,161,77,.38),
+    0 20px 28px rgba(0,0,0,.65),
+    inset 0 0 22px rgba(224,185,96,.18);
+}
+
+/* Sparkler-like magical background */
+.sparkler-field{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.sparkler{
+  position:absolute;width:4px;height:4px;border-radius:50%;
+  background:#ffe7a2;box-shadow:0 0 10px #ffc85f,0 0 20px #9f5be8;
+  animation:sparklerFloat 4.8s ease-in-out infinite;
+}
+.sparkler:before,.sparkler:after{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:92px;height:92px;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,#ffd978 0 1.5deg,transparent 1.5deg 18deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 44%,#000 46% 48%,transparent 50%);
+  opacity:.48;
+  animation:sparkBurst 2.8s ease-in-out infinite;
+}
+.sparkler:after{width:58px;height:58px;opacity:.66;animation-delay:.8s}
+.s1{left:7%;top:16%;animation-delay:.1s}
+.s2{left:87%;top:10%;animation-delay:1.2s}
+.s3{left:15%;top:58%;animation-delay:2.1s}
+.s4{left:80%;top:64%;animation-delay:.7s}
+.s5{left:44%;top:8%;animation-delay:1.8s}
+.s6{left:54%;top:82%;animation-delay:2.6s}
+@keyframes sparkBurst{
+  0%,100%{transform:translate(-50%,-50%) scale(.35) rotate(0);opacity:.12}
+  50%{transform:translate(-50%,-50%) scale(1) rotate(16deg);opacity:.72}
+}
+@keyframes sparklerFloat{
+  0%,100%{transform:translateY(0) scale(.8)}
+  50%{transform:translateY(-14px) scale(1.15)}
+}
+
+@media(max-width:720px){
+  .mast-character-layout{
+    grid-template-columns:82px 1fr 82px;
+    gap:3px;
+    align-items:center;
+  }
+  .title-character{height:140px}
+  .mast h1{font-size:clamp(2.2rem,11vw,4.2rem)}
+  .simple-birthday-panel{grid-template-columns:1fr}
+  .simple-birthday-panel .birthday-copy{text-align:center;align-items:center}
+  .oracle{transform:rotateX(9deg)}
+}
+
+
+.point-ledger{
+  margin:14px auto 0;padding:11px 13px;max-width:640px;border-top:1px solid #d7b96844;
+  color:#dccfae;font-size:.86rem;line-height:1.45
+}
+.point-ledger strong{color:#f3d98d}
+.point-gift{
+  display:none;margin:22px auto 4px;padding:20px 17px;border:2px solid #9b783d;
+  outline:1px solid #f1d58c;outline-offset:-7px;border-radius:10px;
+  background:linear-gradient(145deg,#21152b,#0e0b15);color:#f7eacb;
+  box-shadow:0 14px 35px #0007, inset 0 1px #fff2;text-align:center
+}
+.point-gift.show{display:block;animation:giftReveal .8s ease both}
+@keyframes giftReveal{
+  0%{opacity:0;transform:scale(.82) rotate(-1deg);filter:brightness(2)}
+  60%{opacity:1;transform:scale(1.025) rotate(.4deg)}
+  100%{transform:none;filter:none}
+}
+.point-gift-kicker{color:#efd27d;letter-spacing:.13em;text-transform:uppercase;font-size:.7rem}
+.point-gift h3{margin:9px 0 7px;color:#fff1bd;font-size:clamp(1.3rem,4vw,2rem);font-weight:500}
+.point-gift p{line-height:1.5}
+.point-token{
+  width:min(210px,65vw);aspect-ratio:1;margin:15px auto;display:grid;place-items:center;
+  border-radius:50%;border:3px double #f2d47e;background:
+  radial-gradient(circle at 35% 28%,#fff7ce55,transparent 22%),
+  radial-gradient(circle,#382348,#100b17 68%);
+  box-shadow:0 0 0 8px #d8b65b22,0 0 32px #eac65b55,inset 0 0 28px #0009;
+  color:#fff0b1;text-transform:uppercase;letter-spacing:.08em;font-weight:700;
+  white-space:pre-line;line-height:1.4
+}
+.point-token.nocturne{background:radial-gradient(circle at 35% 28%,#fff7ce55,transparent 22%),radial-gradient(circle,#263f78,#10172d 68%)}
+.point-token.rouge{background:radial-gradient(circle at 35% 28%,#fff7ce55,transparent 22%),radial-gradient(circle,#a33b5c,#421526 68%)}
+.point-token.étoile{background:radial-gradient(circle at 35% 28%,#fff7ce77,transparent 22%),radial-gradient(circle,#e2c367,#705922 68%);color:#24180d}
+.point-token.sauvage{background:radial-gradient(circle at 35% 28%,#fff7ce55,transparent 22%),radial-gradient(circle,#668068,#24352a 68%)}
+.point-save-copy{color:#f7df9b}
+.future-phases{
+  margin:14px auto 0;padding:12px 14px;max-width:590px;border:1px solid #d5b66855;
+  border-radius:8px;background:#fff8e30c;text-align:left;font-size:.87rem
+}
+.future-phases p{margin:7px 0}
+.saved-points-summary{
+  margin:16px auto 0;color:#705632;font-size:.88rem;line-height:1.5
+}
+.saved-points-summary strong{color:#3d2b1c}
+
+
+/* Part Time's birthday playlist — simple bottom section */
+.birthday-playlist-section{
+  position:relative;
+  max-width:920px;
+  margin:48px auto 100px;
+  padding:28px 22px 24px;
+  border:1px solid rgba(216,183,101,.68);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 85% 15%,rgba(112,74,142,.20),transparent 30%),
+    linear-gradient(145deg,rgba(31,19,42,.97),rgba(9,8,16,.98));
+  box-shadow:0 22px 55px rgba(0,0,0,.72),inset 0 1px rgba(255,255,255,.08);
+  text-align:center;
+  overflow:hidden;
+}
+.birthday-playlist-section:before,
+.birthday-playlist-section:after{
+  content:"✦";
+  position:absolute;
+  color:rgba(235,203,118,.34);
+  font-size:4rem;
+}
+.birthday-playlist-section:before{left:18px;top:10px}
+.birthday-playlist-section:after{right:18px;bottom:5px}
+.birthday-playlist-section h2{
+  position:relative;
+  z-index:1;
+  margin:0 0 10px;
+  color:#f5dda0;
+  font-family:Georgia,serif;
+  font-weight:500;
+  font-size:clamp(1.6rem,4vw,2.4rem);
+}
+.birthday-playlist-section p{
+  position:relative;
+  z-index:1;
+  max-width:680px;
+  margin:0 auto 18px;
+  color:#ddd0bd;
+  line-height:1.6;
+}
+.spotify-bottom-frame{
+  position:relative;
+  z-index:1;
+  padding:7px;
+  border:1px solid rgba(216,183,101,.55);
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(216,183,101,.18),rgba(255,255,255,.04),rgba(96,62,122,.18));
+}
+.spotify-bottom-frame iframe{
+  display:block;
+  width:100%;
+  min-height:352px;
+  border:0;
+  border-radius:11px;
+}
+.spotify-help{
+  margin-top:11px!important;
+  margin-bottom:0!important;
+  color:#bcae9b!important;
+  font-size:.82rem;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div id="birthdayEntrance" class="birthday-entrance" role="dialog" aria-modal="true" aria-labelledby="entranceTitle">
+  <div class="entrance-stars" aria-hidden="true"></div>
+  <div class="entrance-vignette" aria-hidden="true"></div>
+  <div class="entrance-card">
+    <div class="entrance-candles" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <p class="entrance-kicker">You are invited</p>
+    <h1 id="entranceTitle">Welcome to Part Time’s Birthday at House Nocturne</h1>
+    <p class="entrance-copy">The doors of House Nocturne open for an evening of magic, mystery, and merriment.</p>
+    <p class="entrance-dare">Ask for your fortune… <em>if you dare.</em></p>
+    <button id="enterOracle" type="button">Begin the Reading</button>
+    <p class="entrance-hint">House Nocturne doors are waiting.</p>
+  </div>
+</div>
+
+
+<div class="bg-stars"></div>
+<div class="sparkler-field" aria-hidden="true">
+  <i class="sparkler s1"></i><i class="sparkler s2"></i><i class="sparkler s3"></i>
+  <i class="sparkler s4"></i><i class="sparkler s5"></i><i class="sparkler s6"></i>
+</div>
+
+<main class="shell">
+  
+  
+  <header class="mast mast-balanced-layout">
+    <div class="mast-copy">
+      <div class="kicker">A birthday reading prepared for one magical person</div>
+      <h1><span class="happy-line">Happy Birthday</span>Part Time</h1>
+      <div class="oracle-subtitle">The Folded Oracle</div>
+      
+      <p class="lede birthday-lede">Ask a question. Choose three times. Reveal your fortune.</p>
+    </div>
+
+    <div class="character-stories">
+      <article class="character-story poe-story">
+        <div class="character-cutout">
+          <img src="assets/image-01-efec49886a34.png" alt="Poe, Part Time’s raven">
+        </div>
+        <div class="character-copy">
+          <strong>Poe the Raven</strong>
+          <p>Poe has flown in from the gothic tower to witness the reading. He notices the quiet signs others miss, keeps careful watch over every choice, and offers the occasional dry observation when destiny becomes too dramatic.</p>
+        </div>
+      </article>
+
+      <article class="character-story spike-story">
+        <div class="character-cutout">
+          <img src="assets/image-02-a86ce78ebbc3.png" alt="Spike, Part Time’s pocket dragon">
+        </div>
+        <div class="character-copy">
+          <strong>Spike the Dragon</strong>
+          <p>Spike has guarded Part Time’s brightest birthday fortunes all night. Loyal, mischievous, and dusted with purple magic, he is here to protect the wishes, encourage brave questions, and make sure joy gets the final word.</p>
+        </div>
+      </article>
+    </div>
+  </header>
+
+
+
+  <section class="desk">
+    <div class="candles"><i class="candle c1"></i><i class="candle c2"></i><i class="candle c3"></i></div>
+    <div class="question-zone">
+      <div class="prompt" id="prompt">Ask your question</div>
+      <div class="ask-row" id="askRow">
+        <input id="question" maxlength="150" placeholder="What would you like to know?">
+        <button class="gold-btn" id="ask">Ask the fates</button>
+      </div>
+      <div class="progress" aria-label="reading progress">
+        <i class="dot on"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i>
+      </div>
+    </div>
+
+    <section class="house-guidance" id="houseGuidance" aria-live="polite">
+      <h3>Before You Choose…</h3>
+      <p>The students of each House are <strong>not</strong> in isolation.</p>
+      <p><strong>Together, the Houses create one magical community where friendships cross House lines, knowledge is shared, and every individual’s path has value.</strong></p>
+      <p class="alignment-line">The Folded Oracle invites you to look beyond your own House for guidance. For this reading, choose the House whose magic best reflects the future you wish to explore—not necessarily the House you call home.</p>
+      <p class="connected-line">All Houses are connected by magic.</p>
+      <div class="point-ledger" id="pointLedger" aria-live="polite"></div>
+    </section>
+
+    <div class="choices" id="houses">
+      <button class="choice" data-house="Nocturne"><b>☾ Nocturne</b><small>Secrets, intuition, midnight possibility</small></button>
+      <button class="choice" data-house="Rouge"><b>♛ Rouge</b><small>Warmth, courage, desire, celebration</small></button>
+      <button class="choice" data-house="Étoile"><b>✦ Étoile</b><small>Recognition, hope, wonder, bright ideas</small></button>
+      <button class="choice" data-house="Sauvage"><b>❧ Sauvage</b><small>Instinct, freedom, growth, adventure</small></button>
+    </div>
+
+    <div class="choices" id="paths">
+      <button class="choice" data-path="Moonveil"><b>Moonveil</b><small>A hidden truth enters the light</small></button>
+      <button class="choice" data-path="Ravenflight"><b>Ravenflight</b><small>A message arrives by an unlikely route</small></button>
+      <button class="choice" data-path="Heartflame"><b>Heartflame</b><small>A brave desire asks to be chosen</small></button>
+      <button class="choice" data-path="Crystal Echo"><b>Crystal Echo</b><small>What you send out returns more clearly</small></button>
+      <button class="choice" data-path="Wildthorn"><b>Wildthorn</b><small>An untamed path opens with purpose</small></button>
+      <button class="choice" data-path="Starlit Secret"><b>Starlit Secret</b><small>A wish grows stronger in quiet</small></button>
+      <button class="choice" data-path="Eclipse Bloom"><b>Eclipse Bloom</b><small>An ending makes room for beauty</small></button>
+      <button class="choice" data-path="Golden Ember"><b>Golden Ember</b><small>A small spark becomes lasting joy</small></button>
+    </div>
+
+    <div class="choices symbols" id="symbols">
+      <button class="choice" data-symbol="Spike"><b>🐉 Spike</b><small>Loyal magic and mischievous courage</small></button>
+      <button class="choice" data-symbol="Raven"><b>🪶 Raven</b><small>Wisdom, timing, and watchful truth</small></button>
+      <button class="choice" data-symbol="Moon"><b>☾ Moon</b><small>Intuition and unseen momentum</small></button>
+      <button class="choice" data-symbol="Rose"><b>🌹 Rose</b><small>Affection, delight, and tenderness</small></button>
+      <button class="choice" data-symbol="Mirror"><b>◇ Mirror</b><small>Self-knowledge and surprising clarity</small></button>
+      <button class="choice" data-symbol="Candle"><b>🕯 Candle</b><small>Hope held steadily through darkness</small></button>
+      <button class="choice" data-symbol="Crystal"><b>◆ Crystal</b><small>Focus, possibility, and clear intent</small></button>
+      <button class="choice" data-symbol="Hidden Key"><b>⚿ Hidden Key</b><small>Access, discovery, and a new door</small></button>
+    </div>
+
+    <div class="stage">
+
+      <div class="oracle-wrap">
+        <div class="rune-ring"></div>
+        <div class="oracle" id="oracle">
+          <div class="paper-square">
+            <div class="tri tl"></div><div class="tri tr"></div><div class="tri bl"></div><div class="tri br"></div>
+            <div class="label l1" id="lab1"><span class="icon">☾</span>NOCTURNE</div>
+            <div class="label l2" id="lab2"><span class="icon">🌹</span>ROUGE</div>
+            <div class="label l3" id="lab3"><span class="icon">✦</span>ÉTOILE</div>
+            <div class="label l4" id="lab4"><span class="icon">❧</span>SAUVAGE</div>
+            <div class="seal">✦</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <article class="reveal-card" id="result">
+      <div class="card-meta" id="meta"></div>
+      <h2 class="card-title" id="title"></h2>
+      <div class="card-text" id="fortune"></div>
+      <div class="voices">
+        <div class="voice"><b>Spike whispers</b><br><span id="spikeLine"></span></div>
+        <div class="voice"><b>Poe observes</b><br><span id="poeLine"></span></div>
+      </div>
+      <div class="blessing" id="blessing"></div>
+
+      <section class="point-gift" id="pointGift" aria-live="polite">
+        <div class="point-gift-kicker">✦ A Rare Gift from the Folded Oracle ✦</div>
+        <h3 id="pointGiftTitle"></h3>
+        <p id="pointGiftMeaning"></p>
+        <div class="point-token" id="pointToken"></div>
+        <p class="point-save-copy"><strong>Take a screenshot or save your point.</strong> Keep it for potential future fun.</p>
+        <div class="future-phases">
+          <p><strong>Phase II — The Awakening:</strong> your collected House-aligned points may influence the powers revealed during the magical abilities quiz.</p>
+          <p><strong>Phase III — The Grand Convergence:</strong> your points may unlock opportunities, advantages, or surprises during an inter-House competition.</p>
+        </div>
+        <div class="actions">
+          <button class="gold-btn" id="savePoint">Save point card</button>
+        </div>
+      </section>
+
+      <div class="saved-points-summary" id="savedPointsSummary"></div>
+      <div class="actions">
+        <button class="gold-btn" id="share">Share this fortune</button>
+        <button class="ghost-btn" id="again">Ask another question</button>
+        
+      </div>
+    </article>
+
+    
+    <section class="bottom-birthday-cake">
+      <div class="bottom-cake-image">
+        <img src="assets/image-03-cc8203d7aeb3.png" alt="Part Time's magical House Nocturne birthday cake with Spike">
+      </div>
+      <div class="closing-narrative">
+        <span class="closing-mark">✦</span>
+        <h2>A Birthday Blessing for Part Time</h2>
+        <p>Tonight, the halls of House Nocturne glow a little brighter. Poe keeps watch from the shadows, Spike guards the candles, and every folded corner holds a wish made especially for Part Time.</p>
+        <p>May the year ahead bring strange and beautiful discoveries, loyal companions, joyful surprises, and the courage to follow every spark of magic that calls your name.</p>
+        <p class="closing-line">The oracle has spoken, the candles are lit, and the celebration is only beginning.</p>
+      </div>
+    </section>
+  </section>
+</main>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const state={question:"",house:"",path:"",symbol:"",grantedPoint:""};
+const oracle=$("#oracle"), prompt=$("#prompt"), result=$("#result");
+const spikeBubble={set textContent(v){const el=document.querySelector(".spike-feature span");if(el)el.textContent=v}};
+const ravenTalk={set textContent(v){const el=document.querySelector(".poe-feature span");if(el)el.textContent=v}};
+const dots=$$(".dot");
+const houses=$("#houses"), paths=$("#paths"), symbols=$("#symbols"), houseGuidance=$("#houseGuidance"), pointGift=$("#pointGift");
+const labels=["#lab1","#lab2","#lab3","#lab4"].map($);
+
+const pathNames=["Moonveil","Ravenflight","Heartflame","Crystal Echo","Wildthorn","Starlit Secret","Eclipse Bloom","Golden Ember"];
+const symbolNames=["Spike","Raven","Moon","Rose","Mirror","Candle","Crystal","Hidden Key"];
+
+const houseText={
+ Nocturne:{opening:"House Nocturne asks you to look beneath the surface.",guidance:"Trust the quiet clue, private instinct, or unspoken truth that keeps returning.",outcome:"The answer is forming in private before it becomes visible."},
+ Rouge:{opening:"House Rouge brings courage and honest desire to this question.",guidance:"Choose the response that is warm, direct, and brave rather than merely safe.",outcome:"Forward movement comes when feeling and action agree."},
+ "Étoile":{opening:"House Étoile turns this question toward hope and possibility.",guidance:"Follow the idea, invitation, or connection that makes the future feel larger.",outcome:"A brighter option is closer than it first appears."},
+ Sauvage:{opening:"House Sauvage asks what would happen if you stopped forcing the path.",guidance:"Leave room for instinct, change, and an answer that arrives differently than expected.",outcome:"Growth comes through flexibility rather than perfect control."}
+};
+const pathText={
+ Moonveil:{meaning:"Moonveil reveals something that has been difficult to name.",advice:"Wait for the hidden part of the situation to become clear before making a final judgment."},
+ Ravenflight:{meaning:"Ravenflight signals news, timing, or a useful coincidence.",advice:"Pay attention to the message that arrives indirectly or from an unexpected person."},
+ Heartflame:{meaning:"Heartflame shows that desire is already pointing toward the answer.",advice:"Be honest about what you want, then take one brave but measured step toward it."},
+ "Crystal Echo":{meaning:"Crystal Echo reflects what has already been said, offered, or set in motion.",advice:"Notice what is being returned to you; the response reveals more than the original gesture."},
+ Wildthorn:{meaning:"Wildthorn marks a worthwhile path with a complication attached.",advice:"Do not confuse difficulty with a warning; decide whether the challenge protects something valuable."},
+ "Starlit Secret":{meaning:"Starlit Secret suggests that a quiet hope is gaining support.",advice:"Keep nurturing it without demanding immediate proof."},
+ "Eclipse Bloom":{meaning:"Eclipse Bloom appears when an ending is making room for something better suited to you.",advice:"Release what has completed its purpose instead of trying to restore its old shape."},
+ "Golden Ember":{meaning:"Golden Ember points to a small beginning with lasting potential.",advice:"Give steady attention to the modest opportunity rather than waiting for a dramatic sign."}
+};
+const symbolText={
+ Spike:{meaning:"Spike adds loyalty, playful courage, and well-managed mischief.",closing:"Let trust and a little boldness protect the next step."},
+ Raven:{meaning:"The Raven brings watchfulness, timing, and the truth beneath the obvious message.",closing:"Observe first; the right moment will make the action clearer."},
+ Moon:{meaning:"The Moon represents unseen movement and strong intuition.",closing:"Something is changing before there is visible proof, so do not dismiss what you sense."},
+ Rose:{meaning:"The Rose places affection, pleasure, and appreciation at the centre of the reading.",closing:"The answer should make room for tenderness rather than treating it as an afterthought."},
+ Mirror:{meaning:"The Mirror returns the question to what you already know about yourself.",closing:"Choose the answer that still feels honest when no one else is watching."},
+ Candle:{meaning:"The Candle offers steady hope rather than sudden certainty.",closing:"Protect the small light and let consistency do what urgency cannot."},
+ Crystal:{meaning:"The Crystal sharpens intention and removes unnecessary noise.",closing:"Name the desired outcome clearly, then judge each option by whether it supports that aim."},
+ "Hidden Key":{meaning:"The Hidden Key reveals access through a person, invitation, or seemingly minor idea.",closing:"Do not overlook the small opening; it may lead much farther than expected."}
+};
+const titles=["The Velvet Door","The Birthday Star","The Raven's Promise","The Moonlit Key","The Golden Secret","The Wild Rose","The Candle Beyond Midnight","The Dragon's Little Prophecy","The Starlit Invitation","The Beautiful Turning"];
+const spikes=[
+ "I had a feeling this one belonged to you.",
+ "Excellent. I was hoping we'd get this fortune.",
+ "Keep the question close. It is already changing shape.",
+ "Part Time makes even destiny want to show off.",
+ "I may have nudged the stars. Only a little."
+];
+const poes=[
+ "Interesting. Suspiciously hopeful, but interesting.",
+ "The timing is better than it appears.",
+ "I noticed the sign first. Naturally.",
+ "Do not mistake quiet movement for no movement.",
+ "Even ravens approve of this one."
+];
+const blessings=[
+ "May Part Time’s birthday open a year of bright rooms, devoted friends, delicious mischief, and wishes that know exactly where to find them.",
+ "May Part Time's next year hold soft surprises, brave choices, and more reasons to celebrate than can fit on a single cake.",
+ "May every wish made for Part Time tonight find a secret passage toward becoming real.",
+ "May this birthday year return Part Time's warmth in unexpected, generous ways.",
+ "May House Nocturne lights burn brighter wherever Part Time chooses to go next.",
+ "May joy keep finding Part Time, even when it has to take the scenic route."
+];
+
+const questionArchetypes={
+ love:{label:"love and vulnerability",tests:[/love/,/crush/,/date/,/romance/,/like me/,/ask .* out/],interpretation:"This question carries hope, vulnerability, and a wish to know whether affection can safely move forward.",focus:"Look for mutual effort, honest interest, and room for both people to be fully themselves.",conclusion:"The Oracle favours one sincere opening, followed by careful attention to whether warmth comes toward you in return."},
+ relationship:{label:"an existing relationship",tests:[/relationship/,/partner/,/marriage/,/girlfriend/,/boyfriend/,/spouse/],interpretation:"This question is about the pattern two people are creating together, not only one emotional moment.",focus:"Notice whether care, honesty, and responsibility move in both directions.",conclusion:"The healthiest next step makes the bond more truthful without making either person smaller."},
+ friendship:{label:"friendship and belonging",tests:[/friend/,/friendship/,/belong/,/group/],interpretation:"The Oracle hears a question about loyalty, belonging, and whether this connection still has room to grow.",focus:"Pay attention to who makes space for your full presence rather than only your usefulness.",conclusion:"A lasting friendship is strengthened by honest words and by how those words are received."},
+ trust:{label:"trust and hidden truth",tests:[/trust/,/lie/,/truth/,/secret/,/honest/,/betray/,/cheat/],interpretation:"Reassurance alone no longer feels sufficient; you are looking for evidence that words and actions agree.",focus:"Watch repeated behaviour, contradictions, and the clue you keep explaining away.",conclusion:"Let consistency—not promises alone—decide what deserves access to you."},
+ career:{label:"career and ambition",tests:[/career/,/job/,/work/,/boss/,/promotion/,/interview/,/business/],interpretation:"This question sits between security and expansion. Part of you wants certainty while another part wants room to become more.",focus:"Judge the opportunity by growth, sustainability, respect, and the life it creates outside the work itself.",conclusion:"The strongest path creates real momentum without demanding that you disappear inside it."},
+ money:{label:"money and security",tests:[/money/,/finance/,/debt/,/afford/,/income/,/savings/,/pay/],interpretation:"This question asks for both practical safety and freedom from fear.",focus:"Separate urgent needs, long-term stability, and emotional pressure before choosing.",conclusion:"The Oracle favours the plan that reduces pressure steadily; repeated choices matter more than one dramatic correction."},
+ purpose:{label:"purpose and direction",tests:[/purpose/,/meaning/,/calling/,/meant to/,/focus on/,/direction/,/right path/],interpretation:"You may be waiting for one perfect answer, but purpose is usually revealed through repeated choices.",focus:"Notice where your abilities, care, and curiosity keep meeting.",conclusion:"Follow the next meaningful thread instead of waiting for a complete map."},
+ confidence:{label:"confidence and self-belief",tests:[/confidence/,/good enough/,/capable/,/can i/,/afraid/,/scared/],interpretation:"The deeper question may be whether you can act before you feel completely certain.",focus:"Use evidence from what you have survived, learned, and completed—not the mood of one anxious moment.",conclusion:"Courage arrives through action. Take one step small enough to be possible and meaningful enough to prove something to yourself."},
+ healing:{label:"healing and recovery",tests:[/heal/,/recovery/,/grief/,/hurt/,/pain/,/mental health/,/get better/],interpretation:"The Oracle does not mistake slow healing for failure. Something tender is rebuilding its sense of safety.",focus:"Choose support, rest, boundaries, and practices that make recovery sustainable.",conclusion:"Improvement may arrive unevenly, but it is still movement. Honour what is healing without demanding that it hurry."},
+ moving:{label:"moving and transition",tests:[/move/,/moving/,/relocate/,/new city/,/new home/,/apartment/,/house/],interpretation:"A threshold is present. Excitement and grief may stand together because change asks for both arrival and departure.",focus:"Distinguish fear of the unknown from genuine warning signs.",conclusion:"The reading favours preparation followed by movement; every detail need not be resolved before the next concrete step."},
+ creativity:{label:"creativity and expression",tests:[/creative/,/write/,/art/,/paint/,/music/,/project/,/idea/,/make/],interpretation:"Something wants to be made, but judgment may be arriving before the work has had time to breathe.",focus:"Protect the unfinished stage from perfectionism and comparison.",conclusion:"Make the first version alive before trying to make it flawless. The path becomes visible through creating."},
+ choice:{label:"a crossroads",tests:[/should i/,/choose/,/choice/,/decide/,/decision/,/option/,/which/,/either/],interpretation:"You are standing between possibilities and hoping certainty will choose for you.",focus:"Compare not only each reward, but the daily reality and cost each path creates.",conclusion:"There may be no risk-free option. Choose the path whose difficulties purchase growth rather than repetition."},
+ timing:{label:"timing and patience",tests:[/when/,/how long/,/soon/,/wait/,/timing/,/ready/,/this year/,/happen/],interpretation:"The Oracle hears impatience, but also the sense that something is moving just beyond sight.",focus:"Use the waiting period to prepare, gather information, and notice openings.",conclusion:"The moment is approaching through preparation, not accident. Act when the opening becomes real—not merely when waiting becomes uncomfortable."},
+ lettingGo:{label:"release and endings",tests:[/let go/,/move on/,/ending/,/give up/,/release/,/closure/,/over it/],interpretation:"An ending is asking to be acknowledged, even if part of you is still bargaining with its old shape.",focus:"Ask whether you are preserving love and meaning—or only postponing grief.",conclusion:"Release does not erase what mattered. It makes room for the next part of your life to arrive."},
+ future:{label:"the unknown future",tests:[/future/,/what will/,/will i/,/going to/,/next year/],interpretation:"You are asking the future to become visible because uncertainty currently feels heavier than possibility.",focus:"Notice which parts of the outcome are shaped by your choices and which must remain open.",conclusion:"The future is not fixed, but its direction responds to what you repeat now."},
+ stuck:{label:"feeling stuck",tests:[/stuck/,/blocked/,/can't move/,/why am i/,/what is stopping/],interpretation:"The stillness may be protecting you from fear, an unfinished decision, or a next step that feels too large.",focus:"Reduce the problem until one action becomes possible without requiring perfect motivation.",conclusion:"The way forward is smaller than your frustration suggests. Movement begins when the first step is allowed to be only a first step."},
+ general:{label:"guidance for the road ahead",tests:[],interpretation:"The Oracle hears a sincere question shaped by both hope and uncertainty.",focus:"Look for the option that brings greater honesty, steadiness, and room to grow.",conclusion:"Taken together, the signs favour one deliberate next step—clear enough to begin and flexible enough to change as new truth appears."}
+};
+const houseLenses={
+ Nocturne:{lead:"House Nocturne turns the question toward what is hidden, repeated, or quietly known.",bridge:"Trust the clue beneath the obvious story.",outcome:"Let private truth become clear before you make it public."},
+ Rouge:{lead:"House Rouge answers through courage, desire, and honest connection.",bridge:"Ask what you would choose if fear had a voice but not a vote.",outcome:"Warmth becomes powerful when joined by direct action."},
+ "Étoile":{lead:"House Étoile lifts the question toward possibility, hope, and a wider horizon.",bridge:"Consider which path expands your life without abandoning reality.",outcome:"Follow the possibility that grows brighter when examined closely."},
+ Sauvage:{lead:"House Sauvage answers through instinct, adaptability, and living change.",bridge:"Notice where control has become tighter than the situation requires.",outcome:"The future opens when you move with what is alive rather than forcing an old shape."}
+};
+const archetypeSpike={love:"A brave hello can answer more than a month of wondering.",relationship:"Love should feel like teamwork, not detective work.",friendship:"Choose the people who are excited when you take up space.",trust:"Words are nice. Patterns are louder.",career:"Pick the adventure that also respects your actual life.",money:"Tiny sensible choices are still dragon-sized progress.",purpose:"The path that keeps calling probably knows your name.",confidence:"Borrow courage from your future self for one step.",healing:"Slow healing still counts. Guard the tender parts.",moving:"Pack carefully, then trust your feet.",creativity:"Make the strange little thing. You can polish it after it exists.",choice:"Choose the door you can truly walk through.",timing:"Not yet is frustrating, but it is not the same as never.",lettingGo:"You can keep the love without keeping the weight.",future:"What you feed now is what grows scales later.",stuck:"Make the next step ridiculously small, then take it.",general:"There is enough magic here for one honest next move."};
+const archetypePoe={love:"Interest is best measured by freely given attention.",relationship:"Observe the pattern after difficult conversations, not only during tender ones.",friendship:"Belonging that requires self-erasure is merely access with conditions.",trust:"Contradiction is information. Do not decorate it into reassurance.",career:"Prestige fades quickly when the daily structure is wrong.",money:"Security is built more often through repetition than revelation.",purpose:"Calling is often disguised as the work you keep returning to.",confidence:"Certainty usually follows action rather than preceding it.",healing:"Recovery has seasons. No winter proves spring has failed.",moving:"A threshold clarifies what the hallway could not.",creativity:"Premature judgment has buried more art than lack of talent.",choice:"Every path has a price. Choose the price that purchases growth.",timing:"The opening is forming; impatience cannot widen it.",lettingGo:"An ending becomes gentler once it is permitted to be real.",future:"The future whispers first through repeated present choices.",stuck:"The obstacle may be the size of the step, not the absence of a path.",general:"Watch what returns after distraction. Repetition is testimony."};
+function classifyQuestion(question){
+ const q=question.toLowerCase().replace(/[’']/g,"'");let best="general",score=0;
+ for(const [key,data] of Object.entries(questionArchetypes)){if(key==="general")continue;const hits=data.tests.reduce((n,t)=>n+(t.test(q)?1:0),0);if(hits>score){best=key;score=hits}}
+ return best;
+}
+function contextualCharacterLine(character,archetype){const source=character==="Spike"?archetypeSpike:archetypePoe;return source[archetype]||source.general;}
+
+
+const HOUSE_POINTS_KEY="foldedOracleHousePointsV2";
+const pointHouses=["Nocturne","Rouge","Étoile","Sauvage"];
+const pointSymbols={Nocturne:"☾",Rouge:"♛",Étoile:"✦",Sauvage:"❧"};
+
+function loadPoints(){
+ try{
+  const parsed=JSON.parse(localStorage.getItem(HOUSE_POINTS_KEY)||"{}");
+  return Object.fromEntries(pointHouses.map(h=>[h,Number(parsed[h]||0)]));
+ }catch(e){
+  return Object.fromEntries(pointHouses.map(h=>[h,0]));
+ }
+}
+function savePoints(points){
+ try{localStorage.setItem(HOUSE_POINTS_KEY,JSON.stringify(points));}catch(e){}
+}
+function pointSummaryText(points){
+ const total=pointHouses.reduce((sum,h)=>sum+points[h],0);
+ if(!total)return "No House-aligned points have been saved on this device yet.";
+ return `Saved on this device: ${pointHouses.map(h=>`${h} ${points[h]}`).join(" · ")} · Total ${total}`;
+}
+function renderPointLedger(){
+ const ledger=$("#pointLedger");
+ const summary=$("#savedPointsSummary");
+ const points=loadPoints();
+ const text=pointSummaryText(points);
+ if(ledger)ledger.innerHTML=`<strong>Your saved magical journey</strong><br>${text}`;
+ if(summary)summary.innerHTML=`<strong>Your saved House-aligned points:</strong><br>${text}`;
+}
+function chooseGrantedHouse(){
+ // A granted point may resonate with any House, including—but not limited to—the House chosen for the reading.
+ return random(pointHouses);
+}
+function grantPoint(house){
+ const points=loadPoints();
+ points[house]=(points[house]||0)+1;
+ savePoints(points);
+ state.grantedPoint=house;
+ const token=$("#pointToken");
+ token.className=`point-token ${house.toLowerCase()}`;
+ token.textContent=`${pointSymbols[house]}\n+1 ${house}\nPOINT`;
+ $("#pointGiftTitle").textContent=`You have received an additional ${house} point.`;
+ $("#pointGiftMeaning").textContent=`Your future resonates especially strongly with the magic of House ${house}. This point belongs to you and is aligned with that House.`;
+ pointGift.classList.add("show");
+ renderPointLedger();
+ sparkleBurst();setTimeout(sparkleBurst,350);
+}
+function createPointCard(){
+ if(!state.grantedPoint)return;
+ const house=state.grantedPoint;
+ const canvas=document.createElement("canvas");
+ canvas.width=1080;canvas.height=1350;
+ const ctx=canvas.getContext("2d");
+ const palettes={
+  Nocturne:["#0b0a18","#263f78","#f0d58b"],
+  Rouge:["#1c0710","#9e3153","#f0d58b"],
+  "Étoile":["#2a210b","#d9ba54","#fff0bb"],
+  Sauvage:["#0c160f","#526f56","#f0d58b"]
+ };
+ const [dark,mid,gold]=palettes[house];
+ const grad=ctx.createRadialGradient(540,440,80,540,650,800);
+ grad.addColorStop(0,mid);grad.addColorStop(1,dark);
+ ctx.fillStyle=grad;ctx.fillRect(0,0,1080,1350);
+ ctx.strokeStyle=gold;ctx.lineWidth=5;ctx.strokeRect(42,42,996,1266);
+ ctx.lineWidth=1;ctx.strokeRect(62,62,956,1226);
+ ctx.textAlign="center";ctx.fillStyle=gold;
+ ctx.font="34px Georgia";ctx.fillText("A RARE GIFT FROM THE FOLDED ORACLE",540,170);
+ ctx.font="150px Georgia";ctx.fillText(pointSymbols[house],540,390);
+ ctx.font="bold 82px Georgia";ctx.fillText(`+1 ${house}`,540,540);
+ ctx.font="bold 64px Georgia";ctx.fillText("HOUSE-ALIGNED POINT",540,625);
+ ctx.font="38px Georgia";ctx.fillText("This point belongs to you.",540,760);
+ ctx.font="34px Georgia";ctx.fillText(`Your future resonates with House ${house} magic.`,540,825);
+ ctx.font="30px Georgia";ctx.fillText("Save for Phase II: magical powers",540,990);
+ ctx.fillText("and Phase III: the inter-House competition.",540,1040);
+ ctx.font="italic 34px Georgia";ctx.fillText("All Houses are connected by magic.",540,1170);
+ ctx.font="30px Georgia";ctx.fillText("The Folded Oracle",540,1240);
+ const link=document.createElement("a");
+ link.download=`folded-oracle-${house.toLowerCase()}-point.png`;
+ link.href=canvas.toDataURL("image/png");
+ link.click();
+}
+
+function sparkleBurst(){
+ for(let i=0;i<24;i++){
+  const s=document.createElement("i");s.className="spark";
+  s.style.left=(50+Math.random()*10-5)+"vw";s.style.top=(45+Math.random()*10-5)+"vh";
+  s.style.setProperty("--x",(Math.random()*260-130)+"px");s.style.setProperty("--y",(Math.random()*260-130)+"px");
+  document.body.appendChild(s);setTimeout(()=>s.remove(),1300);
+ }
+}
+function sparkleBurst(){
+ for(let i=0;i<30;i++){
+  const s=document.createElement("i");s.className="spark";
+  s.style.left=(50+Math.random()*12-6)+"vw";s.style.top=(45+Math.random()*12-6)+"vh";
+  s.style.setProperty("--x",(Math.random()*300-150)+"px");s.style.setProperty("--y",(Math.random()*300-150)+"px");
+  document.body.appendChild(s);setTimeout(()=>s.remove(),1900);
+ }
+}
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+let transitioning=false;
+async function magicalTransition(kind="foldA",message="The Oracle is listening…"){
+ if(transitioning)return false;
+ transitioning=true;
+ document.body.classList.add("oracle-transitioning");
+ prompt.textContent=message;
+ oracle.classList.remove("foldA","foldB","v3-fold-a","v3-fold-b");
+ void oracle.offsetWidth;
+ oracle.classList.add(kind==="foldB"?"v3-fold-b":"v3-fold-a");
+ sparkleBurst();
+ await wait(1850);
+ oracle.classList.remove("v3-fold-a","v3-fold-b");
+ document.body.classList.remove("oracle-transitioning");
+ transitioning=false;
+ return true;
+}
+function setStep(n,text){
+ prompt.textContent=text;dots.forEach((d,i)=>d.classList.toggle("on",i<=n));
+}
+function show(el){el.classList.add("show")} function hide(el){el.classList.remove("show")}
+function updateLabels(items){
+ labels.forEach((el,i)=>{el.innerHTML=`<span class="icon">${["☾","✦","◆","⚿"][i]}</span>${items[i]||""}`});
+}
+function random(a){return a[Math.floor(Math.random()*a.length)]}
+function lockChoices(locked){$$('.choice,#ask').forEach(b=>b.disabled=locked)}
+
+$("#ask").onclick=async()=>{
+ const q=$("#question").value.trim();
+ if(!q){$("#question").focus();return}
+ state.question=q;lockChoices(true);
+ await magicalTransition("foldA","The Folded Oracle gathers your question…");
+ $("#askRow").classList.add("hidden");show(houseGuidance);show(houses);
+ setStep(1,"Choose the House whose magic speaks to this future");
+ spikeBubble.textContent="Look beyond loyalty and choose the House whose guidance best suits the future you wish to explore.";
+ ravenTalk.textContent="Your home House remains yours. The Oracle simply invites another perspective.";
+ lockChoices(false);
+};
+houses.onclick=async e=>{
+ const b=e.target.closest(".choice");if(!b||transitioning)return;
+ state.house=b.dataset.house;$$('#houses .choice').forEach(x=>x.classList.toggle('active',x===b));lockChoices(true);
+ await magicalTransition("foldB",`House ${state.house} receives the question…`);
+ hide(houseGuidance);hide(houses);show(paths);
+ setStep(2,"Choose the path that best fits the question");
+ updateLabels(pathNames.slice(0,4));
+ spikeBubble.textContent=`House ${state.house} has answered. Now choose how the future unfolds.`;
+ ravenTalk.textContent="The path changes the meaning of the reading, so choose the one that feels relevant.";
+ lockChoices(false);
+};
+paths.onclick=async e=>{
+ const b=e.target.closest(".choice");if(!b||transitioning)return;
+ state.path=b.dataset.path;$$('#paths .choice').forEach(x=>x.classList.toggle('active',x===b));lockChoices(true);
+ await magicalTransition("foldA",`${state.path} begins to unfold…`);
+ hide(paths);show(symbols);
+ setStep(3,"Choose the symbol that will guide the answer");
+ updateLabels(symbolNames.slice(0,4));
+ spikeBubble.textContent=`${state.path} has shaped the reading. One symbol remains.`;
+ ravenTalk.textContent="Choose the symbol whose meaning belongs in the answer—not merely the prettiest one.";
+ lockChoices(false);
+};
+symbols.onclick=async e=>{
+ const b=e.target.closest(".choice");if(!b||transitioning)return;
+ state.symbol=b.dataset.symbol;$$('#symbols .choice').forEach(x=>x.classList.toggle('active',x===b));lockChoices(true);
+ await magicalTransition("foldB","The Folded Oracle listens… Magic gathers within the folds…");
+ hide(symbols);await wait(450);reveal();lockChoices(false);
+};
+function reveal(){
+ setStep(3,"Your fortune is ready");
+ const h=houseLenses[state.house],p=pathText[state.path],s=symbolText[state.symbol];
+ const archetype=classifyQuestion(state.question),reading=questionArchetypes[archetype];
+ const safeQuestion=state.question.replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]));
+ $("#meta").textContent=`${state.house} · ${state.path} · ${state.symbol} · ${reading.label}`;
+ $("#title").textContent=random(titles);
+ $("#fortune").innerHTML=`
+  <p><em>You asked:</em> “${safeQuestion}”</p>
+  <p><strong>The Oracle listens:</strong> ${reading.interpretation}</p>
+  <p><strong>House ${state.house}:</strong> ${h.lead} ${h.bridge}</p>
+  <p><strong>Your path — ${state.path}:</strong> ${p.meaning} For this question, ${p.advice.charAt(0).toLowerCase()+p.advice.slice(1)}</p>
+  <p><strong>Your symbol — ${state.symbol}:</strong> ${s.meaning} ${s.closing}</p>
+  <p><strong>The signs together:</strong> ${reading.focus} ${h.outcome} ${reading.conclusion}</p>`;
+ $("#spikeLine").textContent=contextualCharacterLine("Spike",archetype);
+ $("#poeLine").textContent=contextualCharacterLine("Poe",archetype);
+ $("#blessing").textContent=random(blessings);
+ pointGift.classList.remove("show");state.grantedPoint="";result.classList.add("show");renderPointLedger();
+ if(Math.random()<0.20)setTimeout(()=>grantPoint(chooseGrantedHouse()),1100);
+ result.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+$("#again").onclick=()=>location.reload();
+$("#savePoint").onclick=createPointCard;
+renderPointLedger();
+$("#share").onclick=async()=>{
+ const text=`${$("#title").textContent}\n${$("#fortune").innerText}\n— Spike's Birthday Oracle`;
+ try{if(navigator.share)await navigator.share({title:"My Birthday Oracle Fortune",text});else{await navigator.clipboard.writeText(text);alert("Fortune copied!");}}catch(e){}
+};
+$("#question").addEventListener("keydown",e=>{if(e.key==="Enter")$("#ask").click()});
+</script>
+
+<style id="angle-catcher-final">
+.mast-character-layout{
+  grid-template-columns:minmax(90px,150px) minmax(0,1fr) minmax(90px,150px) !important;
+  align-items:center !important;
+}
+.mast-copy{
+  text-align:center !important;
+  justify-self:center !important;
+}
+.poe-title{justify-self:start !important}
+.spike-title{justify-self:end !important}
+.poe-title img,.spike-title img{max-height:190px !important}
+
+/* Keep choice names on the paper at all times */
+.label{
+  display:block !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  color:#241619 !important;
+  font-weight:700 !important;
+  text-shadow:0 1px rgba(255,248,224,.9),0 0 7px rgba(255,248,224,.45) !important;
+}
+.oracle .label .icon{display:block !important}
+
+/* More authentic angled cootie catcher */
+.stage{
+  min-height:520px !important;
+  display:grid !important;
+  place-items:center !important;
+  padding-top:34px !important;
+}
+.oracle-wrap{
+  width:min(520px,84vw) !important;
+  perspective:1600px !important;
+  transform:rotate(-2deg) !important;
+}
+.oracle{
+  transform-style:preserve-3d !important;
+  transform:rotateX(18deg) rotateY(-11deg) rotateZ(2deg) scale(.92) !important;
+  transform-origin:center center !important;
+  filter:drop-shadow(28px 38px 26px rgba(0,0,0,.74)) !important;
+}
+.paper-square{
+  inset:9% !important;
+  transform-style:preserve-3d !important;
+  transform:rotate(45deg) translateZ(0) !important;
+  background:linear-gradient(145deg,#c7aa7d,#efddb7 42%,#a18055) !important;
+  border:2px solid #6b482d !important;
+  box-shadow:
+    inset 0 0 46px rgba(56,30,18,.42),
+    inset 0 0 0 5px rgba(53,28,19,.08),
+    12px 15px 0 #5c3b24,
+    18px 28px 40px rgba(0,0,0,.58) !important;
+}
+.paper-square:before{
+  background:
+    linear-gradient(90deg,transparent 49.15%,rgba(70,40,27,.5) 49.7% 50.3%,transparent 50.85%),
+    linear-gradient(transparent 49.15%,rgba(70,40,27,.5) 49.7% 50.3%,transparent 50.85%),
+    linear-gradient(135deg,transparent 49.35%,rgba(72,42,29,.28) 49.7% 50.3%,transparent 50.65%),
+    linear-gradient(45deg,transparent 49.35%,rgba(72,42,29,.28) 49.7% 50.3%,transparent 50.65%) !important;
+}
+.paper-square:after{
+  inset:3% !important;
+  border:1px solid rgba(71,45,29,.52) !important;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(40,18,32,.06),transparent 38%),
+    repeating-radial-gradient(circle at 50% 50%,transparent 0 18px,rgba(80,44,24,.03) 19px 20px) !important;
+}
+.tri{
+  overflow:visible !important;
+  transform-style:preserve-3d !important;
+}
+.tri:before{
+  width:100% !important;
+  height:100% !important;
+  clip-path:polygon(0 0,100% 0,0 100%) !important;
+  border:1px solid #63422a !important;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.26) 0 9%,transparent 10%),
+    linear-gradient(145deg,#ead5ac 0 43%,#b48658 44% 52%,#f0ddba 53% 100%) !important;
+  box-shadow:
+    inset -10px -10px 20px rgba(75,42,24,.28),
+    inset 8px 8px 14px rgba(255,248,222,.16),
+    0 7px 12px rgba(0,0,0,.3) !important;
+}
+.tl{transform:none !important}
+.tr{transform:scaleX(-1) !important}
+.bl{transform:scaleY(-1) !important}
+.br{transform:scale(-1) !important}
+
+.tl:before{
+  transform:translateZ(46px) rotateX(-24deg) rotateY(7deg) !important;
+  transform-origin:100% 100% !important;
+}
+.tr:before{
+  transform:translateZ(38px) rotateY(24deg) rotateX(-6deg) !important;
+  transform-origin:0 100% !important;
+}
+.bl:before{
+  transform:translateZ(34px) rotateY(-24deg) rotateX(6deg) !important;
+  transform-origin:100% 0 !important;
+}
+.br:before{
+  transform:translateZ(43px) rotateX(24deg) rotateY(-7deg) !important;
+  transform-origin:0 0 !important;
+}
+.seal{
+  width:28% !important;
+  height:28% !important;
+  transform:translate(-50%,-50%) rotate(-45deg) translateZ(68px) !important;
+  border:2px solid #d0aa56 !important;
+  box-shadow:
+    0 0 0 7px rgba(24,11,30,.94),
+    0 0 0 10px rgba(203,163,81,.4),
+    0 22px 32px rgba(0,0,0,.62),
+    inset 0 0 22px rgba(224,186,99,.18) !important;
+}
+.l1{left:8% !important;top:15% !important}
+.l2{right:8% !important;top:15% !important}
+.l3{left:8% !important;bottom:15% !important}
+.l4{right:8% !important;bottom:15% !important}
+
+/* Keep paper text inside the catcher */
+.label{
+  width:28% !important;
+  font-size:clamp(.56rem,1.6vw,.76rem) !important;
+  line-height:1.08 !important;
+  z-index:10 !important;
+}
+.label:after{display:none !important}
+
+/* Mobile */
+@media(max-width:720px){
+  .mast-character-layout{
+    grid-template-columns:68px minmax(0,1fr) 68px !important;
+    gap:4px !important;
+  }
+  .poe-title,.spike-title{width:68px !important}
+  .poe-title img,.spike-title img{max-height:118px !important}
+  .oracle-wrap{
+    width:min(390px,88vw) !important;
+    transform:rotate(-1deg) !important;
+  }
+  .oracle{
+    transform:rotateX(14deg) rotateY(-9deg) rotateZ(1.5deg) scale(.86) !important;
+  }
+  .stage{min-height:430px !important}
+  .label{font-size:.54rem !important;width:27% !important}
+}
+</style>
+
+
+<style id="mobile-centering-and-bottom-cake">
+.oracle-subtitle{
+  margin:.35rem auto 0;
+  color:#e8c870;
+  font-size:clamp(.82rem,2.4vw,1.15rem);
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  text-align:center;
+  text-shadow:0 0 14px rgba(219,174,80,.28);
+}
+.bottom-birthday-cake{
+  position:relative;
+  z-index:10;
+  margin-top:42px;
+}
+.bottom-birthday-cake .simple-birthday-panel{
+  margin:0 auto !important;
+}
+.bottom-birthday-cake .birthday-copy{
+  text-align:center !important;
+  align-items:center !important;
+}
+.bottom-birthday-cake .square-cake{
+  width:min(100%,240px) !important;
+  margin-inline:auto !important;
+}
+
+/* Stable centered layout across phones */
+.shell{
+  width:100% !important;
+  max-width:1100px !important;
+  margin-inline:auto !important;
+  padding-inline:12px !important;
+  overflow-x:hidden !important;
+}
+.mast-character-layout{
+  width:100% !important;
+  max-width:900px !important;
+  margin-inline:auto !important;
+  grid-template-columns:minmax(72px,130px) minmax(0,1fr) minmax(72px,130px) !important;
+  justify-items:center !important;
+}
+.mast-copy{
+  width:100% !important;
+  text-align:center !important;
+}
+.desk{
+  width:100% !important;
+  max-width:920px !important;
+  margin-inline:auto !important;
+  overflow:hidden !important;
+}
+.stage{
+  width:100% !important;
+  display:grid !important;
+  place-items:center !important;
+  overflow:visible !important;
+}
+.oracle-wrap{
+  left:auto !important;
+  right:auto !important;
+  margin-inline:auto !important;
+  transform-origin:center center !important;
+}
+.oracle{
+  transform-origin:center center !important;
+}
+
+/* On mobile, put the title cleanly at the top and characters below it. */
+@media(max-width:720px){
+  .shell{
+    padding:10px 8px 48px !important;
+  }
+  .mast-character-layout{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    grid-template-areas:
+      "copy copy"
+      "poe spike" !important;
+    gap:6px 16px !important;
+    align-items:end !important;
+    padding:8px 4px 2px !important;
+  }
+  .mast-copy{
+    grid-area:copy !important;
+    order:0 !important;
+  }
+  .poe-title{
+    grid-area:poe !important;
+    justify-self:end !important;
+    width:96px !important;
+    transform:none !important;
+  }
+  .spike-title{
+    grid-area:spike !important;
+    justify-self:start !important;
+    width:96px !important;
+    transform:none !important;
+  }
+  .poe-title img,.spike-title img{
+    width:96px !important;
+    max-height:132px !important;
+    object-fit:contain !important;
+  }
+  .mast h1{
+    font-size:clamp(2.5rem,13vw,4.4rem) !important;
+    line-height:.88 !important;
+    margin:.1rem 0 .35rem !important;
+  }
+  .mast .kicker{
+    font-size:.58rem !important;
+    letter-spacing:.16em !important;
+    max-width:34ch !important;
+    margin-inline:auto !important;
+  }
+  .mast .lede{
+    max-width:34ch !important;
+    margin-inline:auto !important;
+    font-size:.86rem !important;
+  }
+  .oracle-subtitle{
+    font-size:.72rem !important;
+    letter-spacing:.24em !important;
+    margin-top:.45rem !important;
+  }
+  .desk{
+    padding:14px 8px 26px !important;
+    border-radius:20px !important;
+  }
+  .question-zone,.choices,.reveal-card{
+    width:100% !important;
+    max-width:100% !important;
+    margin-inline:auto !important;
+  }
+  .stage{
+    min-height:400px !important;
+    padding:44px 0 24px !important;
+    margin-top:10px !important;
+  }
+  .oracle-wrap{
+    width:min(340px,82vw) !important;
+    transform:none !important;
+  }
+  .oracle{
+    transform:rotateX(12deg) rotateY(-7deg) rotateZ(1deg) scale(.8) !important;
+  }
+  .oracle-wrap:before{
+    top:-38px !important;
+    max-width:90vw !important;
+    white-space:normal !important;
+    line-height:1.25 !important;
+  }
+  .oracle-wrap:after{
+    bottom:-20px !important;
+    max-width:90vw !important;
+    white-space:normal !important;
+    line-height:1.25 !important;
+  }
+  .label{
+    font-size:.5rem !important;
+    width:26% !important;
+  }
+  .bottom-birthday-cake{
+    margin-top:28px !important;
+  }
+  .bottom-birthday-cake .simple-birthday-panel{
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+  }
+  .bottom-birthday-cake .birthday-copy{
+    order:2 !important;
+  }
+  .bottom-birthday-cake .square-cake{
+    order:1 !important;
+    width:min(100%,260px) !important;
+  }
+}
+</style>
+
+
+<style id="balanced-birthday-narrative-layout">
+/* Balanced title and character narrative layout */
+.mast-balanced-layout{
+  width:min(980px,100%);
+  margin:0 auto;
+  padding:18px 4px 10px;
+  text-align:center;
+}
+.mast-balanced-layout .mast-copy{
+  width:min(720px,100%);
+  margin:0 auto;
+}
+.birthday-welcome{
+  width:min(650px,100%);
+  margin:.85rem auto .55rem;
+  color:#f0dcaa;
+  font-size:clamp(1rem,2.2vw,1.2rem);
+  line-height:1.5;
+  text-align:center;
+}
+.character-stories{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin:24px auto 4px;
+  width:min(900px,100%);
+}
+.character-story{
+  display:grid;
+  grid-template-columns:minmax(105px,150px) minmax(0,1fr);
+  align-items:center;
+  gap:14px;
+  min-width:0;
+  padding:16px;
+  border:1px solid rgba(225,184,91,.42);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 20% 15%,rgba(130,67,153,.16),transparent 32%),
+    linear-gradient(145deg,rgba(25,12,31,.92),rgba(7,5,11,.96));
+  box-shadow:inset 0 0 0 4px rgba(226,184,91,.035),0 14px 32px rgba(0,0,0,.42);
+}
+.character-cutout{
+  width:100%;
+  aspect-ratio:4/5;
+  display:grid;
+  place-items:end center;
+  overflow:hidden;
+  position:relative;
+}
+.character-cutout:after{
+  content:"";
+  position:absolute;
+  left:12%;
+  right:12%;
+  bottom:2%;
+  height:18%;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(193,144,70,.22),transparent 70%);
+  filter:blur(7px);
+  z-index:0;
+}
+.character-cutout img{
+  position:relative;
+  z-index:1;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center bottom;
+  display:block;
+  filter:drop-shadow(0 14px 15px rgba(0,0,0,.72));
+}
+.character-copy{
+  min-width:0;
+  text-align:left;
+}
+.character-copy strong{
+  display:block;
+  margin-bottom:6px;
+  color:#efd48f;
+  font-size:1.05rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.character-copy p{
+  margin:0;
+  color:#d1c1d3;
+  font-size:.88rem;
+  line-height:1.55;
+}
+
+/* Bring the whole page into a consistent proportion */
+.desk{
+  width:min(920px,100%) !important;
+  margin:18px auto 0 !important;
+}
+.question-zone{
+  width:min(720px,100%) !important;
+  margin-inline:auto !important;
+}
+.choices{
+  width:min(780px,100%) !important;
+  margin-inline:auto !important;
+}
+.stage{
+  width:100% !important;
+  max-width:760px !important;
+  margin-inline:auto !important;
+}
+.oracle-wrap{
+  width:min(490px,78vw) !important;
+}
+.bottom-birthday-cake{
+  width:min(720px,100%) !important;
+  margin-inline:auto !important;
+}
+.bottom-birthday-cake .simple-birthday-panel{
+  grid-template-columns:minmax(0,1fr) minmax(180px,240px) !important;
+  align-items:center !important;
+}
+.bottom-birthday-cake .birthday-copy{
+  text-align:left !important;
+  align-items:flex-start !important;
+}
+.bottom-birthday-cake .square-cake{
+  width:min(100%,230px) !important;
+  aspect-ratio:1 !important;
+}
+
+@media(max-width:760px){
+  .mast-balanced-layout{
+    padding:10px 4px 6px;
+  }
+  .character-stories{
+    grid-template-columns:1fr;
+    gap:12px;
+    margin-top:18px;
+  }
+  .character-story{
+    grid-template-columns:92px minmax(0,1fr);
+    gap:12px;
+    padding:13px;
+  }
+  .character-cutout{
+    aspect-ratio:4/5;
+  }
+  .character-copy strong{
+    font-size:.9rem;
+  }
+  .character-copy p{
+    font-size:.78rem;
+    line-height:1.45;
+  }
+  .birthday-welcome{
+    padding-inline:8px;
+    font-size:.98rem;
+  }
+  .oracle-wrap{
+    width:min(340px,78vw) !important;
+  }
+  .bottom-birthday-cake .simple-birthday-panel{
+    grid-template-columns:1fr !important;
+  }
+  .bottom-birthday-cake .birthday-copy{
+    text-align:center !important;
+    align-items:center !important;
+  }
+  .bottom-birthday-cake .square-cake{
+    width:min(100%,250px) !important;
+  }
+}
+
+@media(max-width:420px){
+  .character-story{
+    grid-template-columns:78px minmax(0,1fr);
+  }
+  .character-copy p{
+    font-size:.74rem;
+  }
+  .oracle-wrap{
+    width:min(310px,76vw) !important;
+  }
+}
+</style>
+
+
+<style id="simplified-bottom-layout">
+/* Reduce the number of boxed elements near the bottom */
+.voices{
+  display:block !important;
+  margin:18px 0 8px !important;
+  padding:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.voice{
+  margin:0 !important;
+  padding:8px 0 !important;
+  border:0 !important;
+  border-bottom:1px solid rgba(218,178,86,.22) !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.voice:last-child{
+  border-bottom:0 !important;
+}
+.blessing{
+  margin-top:12px !important;
+  padding:12px 0 !important;
+  border:0 !important;
+  border-top:1px solid rgba(218,178,86,.26) !important;
+  border-bottom:1px solid rgba(218,178,86,.26) !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.actions{
+  padding-top:14px !important;
+}
+
+/* Open, unboxed cake and closing narrative */
+.bottom-birthday-cake{
+  display:grid !important;
+  grid-template-columns:minmax(180px,280px) minmax(0,1fr) !important;
+  gap:30px !important;
+  align-items:center !important;
+  width:min(820px,100%) !important;
+  margin:46px auto 0 !important;
+  padding:30px 0 10px !important;
+  border-top:1px solid rgba(220,180,88,.34) !important;
+}
+.bottom-cake-image{
+  width:100%;
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+}
+.bottom-cake-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:18px;
+  display:block;
+  box-shadow:0 18px 38px rgba(0,0,0,.48);
+}
+.closing-narrative{
+  text-align:left;
+}
+.closing-mark{
+  display:block;
+  margin-bottom:8px;
+  color:#e8c66e;
+  font-size:1.5rem;
+}
+.closing-narrative h2{
+  margin:0 0 12px;
+  color:#efd895;
+  font-size:clamp(1.35rem,3vw,2rem);
+  line-height:1.1;
+}
+.closing-narrative p{
+  margin:0 0 12px;
+  color:#d4c5d5;
+  font-size:.94rem;
+  line-height:1.65;
+}
+.closing-narrative .closing-line{
+  margin-top:16px;
+  color:#f0dba7;
+  font-style:italic;
+}
+
+/* Keep the main reveal card as the only strong container */
+.reveal-card{
+  margin-bottom:0 !important;
+}
+
+@media(max-width:720px){
+  .bottom-birthday-cake{
+    grid-template-columns:1fr !important;
+    gap:20px !important;
+    margin-top:34px !important;
+    padding-top:24px !important;
+  }
+  .bottom-cake-image{
+    width:min(260px,76vw) !important;
+    margin-inline:auto !important;
+  }
+  .closing-narrative{
+    text-align:center !important;
+    padding-inline:8px !important;
+  }
+  .closing-narrative p{
+    font-size:.86rem !important;
+    line-height:1.55 !important;
+  }
+}
+</style>
+
+
+<style id="welcome-copy-style">
+.welcome-overlay-copy{
+max-width:680px;
+margin:1rem auto 1.25rem;
+padding:1rem 1.25rem;
+border:1px solid rgba(220,180,88,.35);
+border-radius:18px;
+background:linear-gradient(180deg,rgba(18,10,28,.88),rgba(10,8,16,.75));
+}
+.birthday-welcome{margin:0;color:#f4dfab;font-size:clamp(1.2rem,3vw,1.6rem);}
+.birthday-invite{margin:.6rem 0;color:#e8ddd0;line-height:1.6}
+.birthday-dare{margin:0;color:#e7c66d;font-size:1.05rem;letter-spacing:.05em}
+@media(max-width:720px){
+.welcome-overlay-copy{margin:.75rem auto 1rem;padding:.9rem}
+.birthday-welcome{font-size:1.25rem}
+.birthday-dare{font-size:.95rem}
+}
+</style>
+
+
+<style id="birthday-entrance-overlay">
+body.entrance-open{
+  overflow:hidden;
+}
+.birthday-entrance{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(96,46,126,.28),transparent 34%),
+    linear-gradient(180deg,#090610 0%,#130a19 48%,#050407 100%);
+  transition:opacity .9s ease,visibility .9s ease;
+}
+.birthday-entrance.is-leaving{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+.entrance-vignette{
+  position:absolute;
+  inset:0;
+  box-shadow:inset 0 0 180px 60px rgba(0,0,0,.84);
+  pointer-events:none;
+}
+.entrance-stars,
+.entrance-stars:before,
+.entrance-stars:after{
+  position:absolute;
+  inset:0;
+  content:"";
+  pointer-events:none;
+  background-repeat:repeat;
+}
+.entrance-stars{
+  opacity:.7;
+  background-image:
+    radial-gradient(circle,#f1d692 0 1px,transparent 1.8px),
+    radial-gradient(circle,#b98bd0 0 1px,transparent 1.8px);
+  background-size:58px 58px,91px 91px;
+  background-position:0 0,23px 17px;
+  animation:driftStars 16s linear infinite;
+}
+.entrance-stars:before{
+  opacity:.35;
+  background-image:radial-gradient(circle,#fff1c2 0 1px,transparent 1.5px);
+  background-size:39px 39px;
+  background-position:12px 7px;
+  animation:twinkle 3.4s ease-in-out infinite alternate;
+}
+.entrance-stars:after{
+  opacity:.24;
+  background:
+    radial-gradient(circle at 18% 72%,rgba(166,94,191,.55),transparent 14%),
+    radial-gradient(circle at 82% 26%,rgba(231,185,92,.34),transparent 12%);
+}
+.entrance-card{
+  position:relative;
+  width:min(680px,100%);
+  padding:clamp(28px,6vw,56px);
+  text-align:center;
+  color:#f8edd5;
+  border:1px solid rgba(231,191,95,.52);
+  border-radius:28px;
+  background:
+    linear-gradient(180deg,rgba(28,14,35,.92),rgba(8,6,12,.95)),
+    radial-gradient(circle at 50% 0%,rgba(226,179,85,.14),transparent 38%);
+  box-shadow:
+    0 34px 90px rgba(0,0,0,.75),
+    inset 0 0 0 5px rgba(238,198,103,.035),
+    inset 0 0 55px rgba(113,51,132,.14);
+  backdrop-filter:blur(12px);
+  animation:entranceRise 1.1s cubic-bezier(.2,.8,.2,1) both;
+}
+.entrance-card:before,
+.entrance-card:after{
+  content:"✦";
+  position:absolute;
+  top:18px;
+  color:#d9b75e;
+  font-size:1rem;
+}
+.entrance-card:before{left:22px}
+.entrance-card:after{right:22px}
+.entrance-kicker{
+  margin:0 0 12px;
+  color:#d9b75e;
+  font-size:.72rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+}
+.entrance-card h1{
+  margin:0 auto 18px;
+  max-width:14ch;
+  color:#f4dfa7;
+  font-size:clamp(2.15rem,7vw,4.6rem);
+  line-height:.95;
+  text-wrap:balance;
+  text-shadow:0 0 24px rgba(219,174,80,.18);
+}
+.entrance-copy{
+  width:min(520px,100%);
+  margin:0 auto 14px;
+  color:#ded1df;
+  font-size:clamp(1rem,2.5vw,1.18rem);
+  line-height:1.6;
+}
+.entrance-dare{
+  margin:0 auto 26px;
+  color:#efd078;
+  font-size:clamp(1.05rem,2.8vw,1.28rem);
+  letter-spacing:.04em;
+}
+#enterOracle{
+  appearance:none;
+  border:1px solid rgba(243,210,126,.75);
+  border-radius:999px;
+  padding:14px 24px;
+  color:#1b1022;
+  background:linear-gradient(180deg,#f1d78f,#cda450);
+  font:inherit;
+  font-weight:700;
+  letter-spacing:.05em;
+  cursor:pointer;
+  box-shadow:0 12px 28px rgba(0,0,0,.38),0 0 22px rgba(220,176,78,.15);
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+#enterOracle:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 34px rgba(0,0,0,.45),0 0 28px rgba(220,176,78,.22);
+  filter:brightness(1.05);
+}
+#enterOracle:focus-visible{
+  outline:3px solid #fff0bd;
+  outline-offset:4px;
+}
+.entrance-hint{
+  margin:15px 0 0;
+  color:#a998ad;
+  font-size:.78rem;
+  letter-spacing:.08em;
+}
+.entrance-candles{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin:0 auto 18px;
+}
+.entrance-candles span{
+  position:relative;
+  width:7px;
+  height:34px;
+  border-radius:3px;
+  background:linear-gradient(90deg,#7d5a2e,#e0bd68,#765126);
+  box-shadow:0 0 12px rgba(220,174,75,.22);
+}
+.entrance-candles span:before{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:100%;
+  width:12px;
+  height:18px;
+  border-radius:60% 60% 48% 48%;
+  background:radial-gradient(circle at 50% 70%,#fff7c9 0 22%,#f3b841 23% 48%,rgba(182,72,41,.9) 49% 70%,transparent 72%);
+  transform:translateX(-50%);
+  filter:drop-shadow(0 0 8px rgba(255,197,74,.75));
+  animation:candleFlicker 1.4s ease-in-out infinite alternate;
+}
+.entrance-candles span:nth-child(2):before{animation-delay:.35s}
+.entrance-candles span:nth-child(3):before{animation-delay:.7s}
+
+@keyframes entranceRise{
+  from{opacity:0;transform:translateY(28px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes driftStars{
+  from{transform:translateY(0)}
+  to{transform:translateY(58px)}
+}
+@keyframes twinkle{
+  from{opacity:.2}
+  to{opacity:.75}
+}
+@keyframes candleFlicker{
+  from{transform:translateX(-50%) rotate(-2deg) scaleY(.95)}
+  to{transform:translateX(-50%) rotate(2deg) scaleY(1.08)}
+}
+
+@media(max-width:520px){
+  .birthday-entrance{padding:12px}
+  .entrance-card{
+    padding:30px 20px 28px;
+    border-radius:22px;
+  }
+  .entrance-card h1{
+    font-size:clamp(2rem,12vw,3.25rem);
+  }
+  .entrance-copy{font-size:.96rem}
+  .entrance-hint{font-size:.72rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .entrance-card,
+  .entrance-stars,
+  .entrance-stars:before,
+  .entrance-candles span:before{
+    animation:none !important;
+  }
+  .birthday-entrance{
+    transition:none !important;
+  }
+}
+</style>
+<script id="birthday-entrance-script">
+(() => {
+  const entrance = document.getElementById('birthdayEntrance');
+  const button = document.getElementById('enterOracle');
+  if (!entrance || !button) return;
+
+  document.body.classList.add('entrance-open');
+
+  const closeEntrance = () => {
+    entrance.classList.add('is-leaving');
+    document.body.classList.remove('entrance-open');
+    setTimeout(() => entrance.remove(), 950);
+  };
+
+  button.addEventListener('click', closeEntrance);
+  button.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      closeEntrance();
+    }
+  });
+
+  requestAnimationFrame(() => button.focus({preventScroll:true}));
+})();
+</script>
+
+
+<section class="birthday-playlist-section" id="birthdayPlaylist">
+  <h2>Part&nbsp;Time’s Birthday Playlist</h2>
+  <p><em>As the celebration continues through House Nocturne, Part&nbsp;Time’s birthday music drifts through the château.</em></p>
+  <div class="spotify-bottom-frame">
+    <iframe
+      title="Part Time's Birthday Playlist on Spotify"
+      src="https://open.spotify.com/embed/playlist/1ORySc9XhJ9zmkatV09tMU?utm_source=generator&theme=0"
+      width="100%"
+      height="352"
+      frameborder="0"
+      allowfullscreen=""
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="eager">
+    </iframe>
+  </div>
+  <p class="spotify-help">Tap play inside the Spotify player. Spotify may ask you to open the app or sign in for full playback.</p>
+</section>
+
+<style id="folded-oracle-v3-enhancements">
+:root{--v3-transition:1.85s}
+.choice{transition:transform .45s ease,box-shadow .45s ease,opacity .55s ease,filter .55s ease}
+.choice:hover{transform:translateY(-4px);box-shadow:inset 0 1px #fff2,0 13px 28px #0009,0 0 20px rgba(230,199,120,.16)}
+.choice:disabled{cursor:wait;opacity:.48;filter:saturate(.6)}
+.oracle-transitioning .choices.show,.oracle-transitioning .house-guidance.show{animation:v3MistAway .8s ease both}
+@keyframes v3MistAway{to{opacity:.22;filter:blur(3px);transform:translateY(8px) scale(.98)}}
+.oracle.v3-fold-a{animation:v3FoldA var(--v3-transition) cubic-bezier(.45,.03,.18,1) both}
+.oracle.v3-fold-b{animation:v3FoldB var(--v3-transition) cubic-bezier(.45,.03,.18,1) both}
+@keyframes v3FoldA{
+ 0%{transform:rotateX(12deg) rotateZ(.6deg) scale(.94);filter:drop-shadow(0 32px 26px #000d) brightness(1)}
+ 24%{transform:rotateX(30deg) rotateZ(-5deg) scale(.86,.68);filter:drop-shadow(0 16px 17px #000d) brightness(1.18)}
+ 52%{transform:rotateX(-4deg) rotateZ(6deg) scale(.72,1.02);filter:drop-shadow(0 30px 30px #000d) brightness(1.35)}
+ 76%{transform:rotateX(22deg) rotateZ(-2deg) scale(.9,.78);filter:drop-shadow(0 20px 20px #000d) brightness(1.12)}
+ 100%{transform:rotateX(12deg) rotateZ(.6deg) scale(.94);filter:drop-shadow(0 32px 26px #000d) brightness(1)}
+}
+@keyframes v3FoldB{
+ 0%{transform:rotateX(12deg) rotateZ(.6deg) scale(.94)}
+ 22%{transform:rotateX(-6deg) rotateZ(7deg) scale(.7,1.04)}
+ 48%{transform:rotateX(32deg) rotateZ(-7deg) scale(.89,.66);filter:brightness(1.4)}
+ 73%{transform:rotateX(2deg) rotateZ(4deg) scale(.76,1)}
+ 100%{transform:rotateX(12deg) rotateZ(.6deg) scale(.94)}
+}
+.oracle-transitioning .paper-square{box-shadow:inset 0 0 58px rgba(98,55,110,.45),0 0 54px rgba(221,185,95,.35),0 26px 38px #0009!important}
+.oracle-transitioning .rune-ring{animation-duration:5s;box-shadow:0 0 28px rgba(229,194,105,.35)}
+#prompt{transition:opacity .5s ease,text-shadow .5s ease;min-height:1.2em}
+.oracle-transitioning #prompt{color:#fff0b6;text-shadow:0 0 16px rgba(226,189,101,.72)}
+@media(prefers-reduced-motion:reduce){:root{--v3-transition:.25s}.oracle.v3-fold-a,.oracle.v3-fold-b{animation-duration:.25s}.spark{display:none}}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const mast=document.querySelector('.mast');
+});
+</script>
+
+</body>
+</html>
+<style id="final-layout-fixes">
+/* Final clean title layout using the supplied Spike and Poe images */
+.mast-character-layout{
+  display:grid !important;
+  grid-template-columns:minmax(92px,160px) minmax(0,1fr) minmax(92px,160px) !important;
+  align-items:center !important;
+  gap:12px !important;
+  padding:18px 6px 12px !important;
+  overflow:visible !important;
+}
+.mast-copy{
+  position:relative !important;
+  z-index:5 !important;
+  min-width:0 !important;
+}
+.title-character{
+  height:auto !important;
+  max-height:none !important;
+  overflow:visible !important;
+  filter:drop-shadow(0 16px 18px rgba(0,0,0,.78)) !important;
+  align-self:center !important;
+}
+.title-character img{
+  width:100% !important;
+  height:auto !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  display:block !important;
+  clip-path:none !important;
+  transform:none !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.title-character:after{display:none !important}
+.spike-title{transform:translateY(8px)}
+.poe-title{transform:translateY(2px)}
+.mast h1{
+  position:relative !important;
+  z-index:6 !important;
+  margin:.15rem 0 .45rem !important;
+  line-height:.9 !important;
+}
+.mast .kicker,.mast .lede{
+  position:relative !important;
+  z-index:6 !important;
+}
+
+/* Keep every instruction and choice above the decorative oracle */
+.question-zone,
+.choices,
+.reveal-card{
+  position:relative !important;
+  z-index:20 !important;
+}
+.stage{
+  position:relative !important;
+  z-index:2 !important;
+  min-height:540px !important;
+  margin-top:24px !important;
+  padding-top:34px !important;
+  overflow:visible !important;
+}
+.oracle-wrap{
+  position:relative !important;
+  z-index:1 !important;
+  margin:0 auto !important;
+  width:min(500px,82vw) !important;
+  aspect-ratio:1 !important;
+  perspective:1500px !important;
+}
+.oracle-wrap:before{
+  top:-26px !important;
+  z-index:3 !important;
+  background:rgba(8,6,12,.88) !important;
+  border:1px solid rgba(208,170,86,.42) !important;
+  padding:6px 10px !important;
+  border-radius:999px !important;
+  white-space:nowrap !important;
+}
+.oracle-wrap:after{
+  bottom:-34px !important;
+  z-index:3 !important;
+  background:rgba(8,6,12,.9) !important;
+  border:1px solid rgba(208,170,86,.36) !important;
+  padding:5px 10px !important;
+  border-radius:999px !important;
+  white-space:nowrap !important;
+}
+
+/* Realistic folded cootie catcher without oversized flaps covering text */
+.oracle{
+  transform:rotateX(12deg) rotateZ(.6deg) scale(.94) !important;
+  transform-origin:center center !important;
+  filter:drop-shadow(0 32px 26px rgba(0,0,0,.84)) !important;
+}
+.paper-square{
+  inset:8% !important;
+  transform:rotate(45deg) rotateX(8deg) translateZ(2px) !important;
+  box-shadow:
+    inset 0 0 48px rgba(45,22,15,.42),
+    inset 0 0 0 5px rgba(50,25,18,.09),
+    0 10px 0 #5b3b24,
+    0 26px 38px rgba(0,0,0,.58) !important;
+}
+.tri{
+  overflow:visible !important;
+  transform-style:preserve-3d !important;
+}
+.tri:before{
+  width:100% !important;
+  height:100% !important;
+  clip-path:polygon(0 0,100% 0,0 100%) !important;
+  border:1px solid #60422a !important;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.24) 0 8%,transparent 9%),
+    radial-gradient(circle at 68% 24%,rgba(235,201,128,.18),transparent 23%),
+    linear-gradient(145deg,#ead5ac 0 43%,#b58c5e 45% 52%,#efdcba 54% 100%) !important;
+  box-shadow:
+    inset -8px -8px 17px rgba(72,40,23,.25),
+    inset 8px 8px 13px rgba(255,248,224,.14),
+    0 6px 10px rgba(0,0,0,.29) !important;
+}
+.tl:before{transform:translateZ(26px) rotateX(-12deg) rotateY(4deg) !important}
+.tr:before{transform:translateZ(22px) rotateY(12deg) rotateX(-4deg) !important}
+.bl:before{transform:translateZ(20px) rotateY(-12deg) rotateX(4deg) !important}
+.br:before{transform:translateZ(25px) rotateX(12deg) rotateY(-4deg) !important}
+.seal{
+  transform:translate(-50%,-50%) rotate(-45deg) translateZ(42px) !important;
+}
+.label{
+  z-index:8 !important;
+  width:30% !important;
+  font-size:clamp(.58rem,1.7vw,.78rem) !important;
+  line-height:1.12 !important;
+}
+
+/* Cleaner instructions */
+.lede{
+  max-width:560px !important;
+}
+.simple-birthday-panel .birthday-copy span:last-child{
+  max-width:42ch !important;
+}
+
+/* Mobile: keep title, instructions and oracle separated */
+@media(max-width:720px){
+  .mast-character-layout{
+    grid-template-columns:72px minmax(0,1fr) 72px !important;
+    gap:5px !important;
+    padding:10px 0 8px !important;
+  }
+  .title-character{width:72px !important}
+  .spike-title{transform:translateY(4px) scale(1.02)}
+  .poe-title{transform:translateY(0) scale(.98)}
+  .mast h1{font-size:clamp(2.15rem,10.8vw,4rem) !important}
+  .mast .kicker{font-size:.58rem !important;letter-spacing:.18em !important}
+  .mast .lede{font-size:.86rem !important;line-height:1.42 !important}
+  .stage{
+    min-height:430px !important;
+    padding-top:40px !important;
+    margin-top:18px !important;
+  }
+  .oracle-wrap{
+    width:min(390px,86vw) !important;
+  }
+  .oracle{
+    transform:rotateX(9deg) rotateZ(.4deg) scale(.88) !important;
+  }
+  .oracle-wrap:before{
+    top:-34px !important;
+    font-size:.56rem !important;
+    letter-spacing:.08em !important;
+  }
+  .oracle-wrap:after{
+    bottom:-26px !important;
+    font-size:.54rem !important;
+    letter-spacing:.07em !important;
+  }
+  .label{
+    font-size:.56rem !important;
+    width:29% !important;
+  }
+}
+</style>
+
+<style id="house-nocturne-deluxe-update">
+:root{--hn-gold:#e2bd65;--hn-violet:#8d63d8;--hn-night:#070712}
+/* Never allow the birthday name to split. */
+.nowrap-name,[data-name="part-time"]{white-space:nowrap!important}
+/* Cinematic House Nocturne doors on the opening screen. */
+.birthday-entrance:before,.birthday-entrance:after{
+ content:"";position:absolute;top:0;bottom:0;width:50.5%;z-index:1;
+ background:
+  linear-gradient(90deg,rgba(255,255,255,.025),transparent 24%),
+  repeating-linear-gradient(90deg,transparent 0 42px,rgba(225,189,101,.08) 43px 45px),
+  radial-gradient(circle at 50% 42%,rgba(142,95,211,.18),transparent 27%),
+  linear-gradient(145deg,#0e0c1a,#05050b 65%);
+ border-color:rgba(226,189,101,.52);border-style:solid;
+ box-shadow:inset 0 0 80px #000,0 0 40px #000;
+ transition:transform 1.25s cubic-bezier(.7,0,.2,1),opacity 1s ease;
+ pointer-events:none
+}
+.birthday-entrance:before{left:0;border-width:0 2px 0 0;transform-origin:left center}
+.birthday-entrance:after{right:0;border-width:0 0 0 2px;transform-origin:right center}
+.birthday-entrance:not(.doors-ready):before{transform:perspective(1100px) rotateY(0)}
+.birthday-entrance:not(.doors-ready):after{transform:perspective(1100px) rotateY(0)}
+.birthday-entrance.doors-ready:before{transform:perspective(1100px) rotateY(-72deg);opacity:.76}
+.birthday-entrance.doors-ready:after{transform:perspective(1100px) rotateY(72deg);opacity:.76}
+.birthday-entrance .entrance-card{z-index:3;position:relative}
+.birthday-entrance .entrance-vignette,.birthday-entrance .entrance-stars{z-index:2}
+/* Ambient controls */
+.hn-controls{position:fixed;right:14px;bottom:14px;z-index:9998;display:flex}
+.hn-control{border:1px solid rgba(226,189,101,.55);background:rgba(7,7,18,.9);color:#f8e8b7;border-radius:999px;padding:10px 13px;font:700 .72rem/1 system-ui;letter-spacing:.04em;box-shadow:0 6px 24px #0009;cursor:pointer}
+.hn-control:hover{transform:translateY(-1px);box-shadow:0 0 22px rgba(141,99,216,.38)}
+/* Character life */
+.character-story img{transition:transform .28s ease,filter .28s ease;cursor:pointer}
+.character-story:hover img{transform:translateY(-4px) rotate(-1deg);filter:drop-shadow(0 0 18px rgba(141,99,216,.5))}
+.hn-speech{position:fixed;left:50%;bottom:76px;transform:translateX(-50%) translateY(12px);z-index:9999;max-width:min(86vw,520px);padding:13px 18px;border:1px solid rgba(226,189,101,.65);border-radius:15px;background:rgba(7,7,18,.96);color:#f6e8c3;text-align:center;font:600 .92rem/1.45 Georgia,serif;opacity:0;pointer-events:none;transition:.3s;box-shadow:0 12px 40px #000b}
+.hn-speech.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* Confetti and magic reveal */
+.hn-magic{position:fixed;inset:0;pointer-events:none;z-index:9997;overflow:hidden}
+.hn-spark{position:absolute;width:8px;height:8px;border-radius:50%;background:radial-gradient(circle,#fff 0 20%,var(--hn-gold) 30%,var(--hn-violet) 72%,transparent 74%);animation:hnBurst 1.7s ease-out forwards;filter:drop-shadow(0 0 7px var(--hn-violet))}
+@keyframes hnBurst{0%{transform:translate(0,0) scale(.2);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1.2) rotate(280deg);opacity:0}}
+.hn-secret{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 50% 40%,#2b1745 0,#090812 55%,#020205 100%);opacity:0;visibility:hidden;transition:.6s}
+.hn-secret.show{opacity:1;visibility:visible}
+.hn-secret-card{max-width:650px;text-align:center;border:1px solid rgba(226,189,101,.62);border-radius:24px;padding:34px 25px;background:rgba(5,5,12,.83);box-shadow:0 0 70px rgba(141,99,216,.28)}
+.hn-secret-card h2{font-size:clamp(2rem,8vw,4rem);color:#f2d78f;margin:.2em 0;white-space:nowrap}
+.hn-secret-card p{font-size:clamp(1rem,3vw,1.25rem);line-height:1.7}.hn-secret-card button{margin-top:14px}
+@media(max-width:600px){.hn-controls{right:8px;bottom:8px}.hn-control{padding:9px 11px;font-size:.65rem}}
+</style>
+<div class="hn-controls" aria-label="House Nocturne controls">
+ <button class="hn-control" id="hnMagic" type="button">✨ A Little Magic</button>
+</div>
+<div class="hn-magic" id="hnMagicLayer" aria-hidden="true"></div>
+<div class="hn-speech" id="hnSpeech" role="status" aria-live="polite"></div>
+<div class="hn-secret" id="hnSecret" aria-hidden="true">
+ <div class="hn-secret-card">
+  <div style="font-size:2rem">🐦 ✦ 🐉</div>
+  <h2>For Part&nbsp;Time</h2>
+  <p>Thank you for celebrating Part Time’s birthday. May every new year bring more laughter, devoted friends, delicious mischief, and a little more magic.</p>
+  <p><strong>Love, Emj</strong></p>
+  <button class="hn-control" id="hnCloseSecret" type="button">Return to the Oracle</button>
+ </div>
+</div>
+<script id="house-nocturne-deluxe-script">
+(()=>{
+ const entrance=document.getElementById('birthdayEntrance');
+ if(entrance) setTimeout(()=>entrance.classList.add('doors-ready'),420);
+ const layer=document.getElementById('hnMagicLayer');
+ const speech=document.getElementById('hnSpeech');
+ const secret=document.getElementById('hnSecret');
+ let interactions=0,speechTimer;
+ const say=(msg)=>{if(!speech)return;speech.textContent=msg;speech.classList.add('show');clearTimeout(speechTimer);speechTimer=setTimeout(()=>speech.classList.remove('show'),3300)};
+ const burst=(x=innerWidth/2,y=innerHeight/2,count=42)=>{
+  if(!layer)return;
+  for(let i=0;i<count;i++){
+   const s=document.createElement('i');s.className='hn-spark';
+   const a=Math.random()*Math.PI*2,d=70+Math.random()*260;
+   s.style.left=x+'px';s.style.top=y+'px';s.style.setProperty('--dx',Math.cos(a)*d+'px');s.style.setProperty('--dy',Math.sin(a)*d+'px');s.style.animationDelay=(Math.random()*.25)+'s';layer.appendChild(s);setTimeout(()=>s.remove(),2200)
+  }
+ };
+ document.getElementById('hnMagic')?.addEventListener('click',e=>{burst(e.clientX,e.clientY,60);say('House Nocturne has added a little birthday magic.')});
+ document.querySelectorAll('.poe-story img').forEach(img=>img.addEventListener('click',e=>{burst(e.clientX,e.clientY,22);say(['Poe says: “Magic always favours Part&nbsp;Time.”','Poe has inspected the question. He approves.','Poe says: “A bright omen is already on its way.”'][Math.floor(Math.random()*3)])}));
+ document.querySelectorAll('.spike-story img').forEach(img=>img.addEventListener('click',e=>{burst(e.clientX,e.clientY,28);say(['Spike sneezes a tiny cloud of purple glitter.','Spike purrs and guards your wish carefully.','Spike says the brave answer is usually the most magical one.'][Math.floor(Math.random()*3)])}));
+ document.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b||b.id.startsWith('hn'))return;
+  interactions++; if(interactions%2===0) burst(e.clientX,e.clientY,28);
+  if(interactions===7 && secret){secret.classList.add('show');secret.setAttribute('aria-hidden','false');burst(innerWidth/2,innerHeight/2,90)}
+ });
+ document.getElementById('hnCloseSecret')?.addEventListener('click',()=>{secret.classList.remove('show');secret.setAttribute('aria-hidden','true')});
+})();
+</script>
